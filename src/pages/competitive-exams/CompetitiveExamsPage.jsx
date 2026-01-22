@@ -5,9 +5,11 @@ import "../../styles/competitive-exams.css"
 export default function CompetitiveExamsPage() {
   return (
     <>
-    <Hero/>
-    <ExamCovered/>
-    <SecureCarrier/>
+    <div className="competitive-exams-page">
+      <Hero />
+      <ExamCovered />
+      <SecureCarrier />
+    </div>
     </>
   )
 }

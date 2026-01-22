@@ -1,3 +1,8 @@
+.competitive-exams-page {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
 .hero-wrapper {
   position: relative;
 }
@@ -289,5 +294,117 @@
   .hero-card {
     width: 100%;
     max-width: 360px;
+  }
+}
+/* Exam covered */
+.exam-section {
+  padding: 3.75rem 6.25rem;
+}
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section-icon {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2;
+  stroke: rgb(163, 21, 58);
+}
+
+.section-header h2 {
+  font-size: 1.85rem;
+  color: #0a1f38;
+  font-weight: 800;
+  white-space: nowrap; /* prevents wrapping */
+}
+
+.header-line {
+  width: 80px;   
+  height: 5px;   
+  background: linear-gradient(90deg, rgb(163,21,58), rgb(227, 107, 107));
+  border-radius: 2px;
+}
+
+.exam-category {
+  margin-bottom: 50px;
+}
+
+.exam-category h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0a1f38;
+  margin-bottom: 20px;
+}
+
+/* Grid layout */
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Each exam box */
+.exam-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: #fff;   /* default white */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #0a1f38;           /* default text color */
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.exam-box:hover {
+  transform: translateY(-4px);
+  background-color: #0a1f38; /* dark on hover */
+  color: #fff;               /* text color white on hover */
+}
+
+/* Span text inside box changes with parent hover */
+.exam-box:hover span {
+  color: #fff;
+}
+
+/* Tick icon changes with parent hover */
+.tick-icon {
+  color: rgb(163,21,58); 
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.exam-box:hover .tick-icon {
+  color: rgb(255, 120, 156); 
+}
+
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .exam-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .exam-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .exam-grid {
+    grid-template-columns: 1fr;
   }
 }
