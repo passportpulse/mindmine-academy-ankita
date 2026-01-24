@@ -1,7 +1,14 @@
-import React from 'react'
+import React from "react";
+import Hero from "./Hero";
+import ContactSection from "./ContactSection";
+import MapEmbed from "./MapEmbd";
 
 export default function ContactPage() {
   return (
-    <div>ContactPage</div>
-  )
+    <>
+      <Hero />
+      <ContactSection/>
+      <MapEmbed/>
+    </>
+  );
 }
