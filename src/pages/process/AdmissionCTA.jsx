@@ -20,11 +20,11 @@ export default function AdmissionCTA() {
             </a>
 
             <a
-              href="mailto:info@agrasainmindminecollege.com"
+              href="mailto:info@mindmineacademy.com"
               className="cta-item"
             >
               <FaEnvelope />
-              <span>info@agrasainmindminecollege.com</span>
+              <span>info@mindmineacademy.com</span>
             </a>
           </div>
 

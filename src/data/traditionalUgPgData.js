@@ -1,6 +1,7 @@
 export const traditionalUGPGPrograms = [
   {
     level: "UG",
+    hash: "ug",
     title: "Undergraduate Programs",
     categories: [
       {
@@ -119,6 +120,7 @@ export const traditionalUGPGPrograms = [
   },
   {
     level: "PG",
+    hash: "pg",
     title: "Postgraduate Programs",
     categories: [
       {

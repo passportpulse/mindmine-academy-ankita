@@ -16,6 +16,7 @@ export default function OpenBoard() {
           {openBoardPrograms.map((program) => (
             <div
               key={program.id}
+              id={program.hash}
               className={`open-board-card ${program.dark ? "dark" : ""}`}
             >
               <h3>{program.title}</h3>

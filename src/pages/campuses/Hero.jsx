@@ -7,7 +7,7 @@ const campuses = [
   {
     name: "Howrah Main Campus",
     address: "Bagnan, Howrah – 711303",
-    desc: "The primary campus located at Maharaja Agrasain Dham near Ghoraghata Railway Station, offering B.Voc & GNM programs with modern classrooms, skill development spaces, and academic support environment.",
+    desc: "The primary campus located at Mindmine Academy near Ghoraghata Railway Station, offering B.Voc & GNM programs with modern classrooms, skill development spaces, and academic support environment.",
     programs: ["Vocational Degree Programs", "GNM Nursing", "Skill Labs"],
     image: campus1,
   },

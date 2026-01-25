@@ -11,7 +11,7 @@ export default function HeroSection() {
         {/* LEFT CONTENT */}
         <div className="hero-left animate-text">
           <h4 className="hero-subtitle">
-            MAHARAJA AGRASAIN – MINDMINE INSTITUTE OF INFORMATION & TECHNOLOGY
+            MINDMINE ACADEMY
           </h4>
 
           <h1 className="hero-title">

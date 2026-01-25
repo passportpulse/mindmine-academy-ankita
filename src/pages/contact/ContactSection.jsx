@@ -11,7 +11,7 @@ export default function ContactSection() {
             <FaMapMarkerAlt className="icon" />
             <h4>Campus Location</h4>
             <p>
-              Maharaja Agrasain Dham, NH-6, Bagnan,
+              Mindmine Academy, NH-6, Bagnan,
               <br />
               Howrah – 711303, West Bengal
             </p>
@@ -25,7 +25,7 @@ export default function ContactSection() {
               <br />
               +91 7603035218
               <br />
-              info@agrasainmindminecollege.com
+              info@mindmineacademy.com
             </p>
           </div>
 

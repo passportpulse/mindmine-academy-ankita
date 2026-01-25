@@ -7,7 +7,7 @@ const campuses = [
     tag: "Main Campus",
     title: "Howrah Main Campus",
     address:
-      "Maharaja Agrasain Dham, Near Ghoraghata Railway Station, Bagnan, Howrah – 711303",
+      "Mindmine Academy, Near Ghoraghata Railway Station, Bagnan, Howrah – 711303",
     phone: "7595077569 / 6289086116",
     map: "https://www.google.com/maps?q=Bagnan+Howrah&output=embed",
   },

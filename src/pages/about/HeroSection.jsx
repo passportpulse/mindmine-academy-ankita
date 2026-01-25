@@ -5,7 +5,6 @@ export default function HeroSection() {
     <section className="about-hero">
       <div className="container">
         <div className="about-hero-container">
-
           {/* LEFT */}
           <div className="about-hero-left">
             <span className="about-badge">
@@ -18,9 +17,9 @@ export default function HeroSection() {
             </h1>
 
             <p className="about-hero-desc">
-              Maharaja Agrasain – Mindmine Institute of Information & Technology
-              offers UGC-approved B.Voc degrees and Nursing programs, shaping
-              students into job-ready professionals across West Bengal.
+              Mindmine Academy offers UGC-approved B.Voc degrees and
+              Nursing programs, shaping students into job-ready professionals
+              across West Bengal.
             </p>
 
             {/* HIGHLIGHT BOX */}
@@ -66,7 +65,6 @@ export default function HeroSection() {
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </section>

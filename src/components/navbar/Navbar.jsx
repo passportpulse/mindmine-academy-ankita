@@ -1,28 +1,69 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { navLinks } from "../navbar/NavbarData";
 import logo from "../../assets/logo-white.svg";
 import "../../styles/navbar.css";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Navbar() {
-  const collapseRef = useRef(null); // reference to collapse div
+  const collapseRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  const [openDropdown, setOpenDropdown] = useState(""); // top-level dropdown open
+  const [openSubDropdown, setOpenSubDropdown] = useState(""); // sub-dropdown open
+
+  // Active parent derived from location
+  const activeParent =
+    location.pathname.startsWith("/student-zone")
+      ? "Student Zone"
+      : location.pathname.startsWith("/admission-guidance")
+      ? "Admission Guidance"
+      : navLinks.find((l) => l.path === location.pathname)?.label || "";
+
+  // Close navbar on mobile
   const handleNavClick = () => {
-    // If collapse is open, close it
     const collapseEl = collapseRef.current;
-    if (collapseEl.classList.contains("show")) {
-      const bsCollapse = new window.bootstrap.Collapse(collapseEl, {
-        toggle: true
-      });
-      bsCollapse.hide();
+    if (collapseEl.classList.contains("show")) collapseEl.classList.remove("show");
+  };
+
+  // Scroll to section in the page
+  const scrollToSection = (hash) => {
+    const section = document.querySelector(hash);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Handle normal link click
+  const handleNormalLinkClick = (label, path) => {
+    handleNavClick();
+    setOpenDropdown("");
+    setOpenSubDropdown("");
+    if (location.pathname !== path) {
+      navigate(path);
+    }
+  };
+
+  // Handle dropdown item click (with optional section scroll)
+  const handleDropdownItemClick = (parentLabel, hash, path = null) => {
+    handleNavClick();
+    setOpenDropdown("");
+    setOpenSubDropdown("");
+    if (path && location.pathname !== path) {
+      navigate(path, { replace: true });
+      setTimeout(() => scrollToSection(hash), 50);
+    } else {
+      scrollToSection(hash);
     }
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-custom sticky-top">
       <div className="container">
-        {/* Logo + Brand */}
-        <NavLink to="/" className="brand d-flex align-items-center gap-2">
+        {/* Logo */}
+        <NavLink
+          to="/"
+          className="brand d-flex align-items-center gap-2"
+          onClick={() => handleNormalLinkClick("Home", "/")}
+        >
           <img src={logo} alt="Mindmine Academy" className="brand-logo" />
           <div className="brand-text">
             <span className="brand-mindmine">MINDMINE</span>
@@ -30,37 +71,127 @@ export default function Navbar() {
           </div>
         </NavLink>
 
-        {/* Hamburger button */}
+        {/* Hamburger */}
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={() => collapseRef.current.classList.toggle("show")}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         {/* Links */}
-        <div
-          className="collapse navbar-collapse"
-          id="navbarSupportedContent"
-          ref={collapseRef} // assign ref here
-        >
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-            {navLinks.map(({ label, path }) => (
-              <li className="nav-item" key={path}>
-                <NavLink
-                  to={path}
-                  className={({ isActive }) =>
-                    `nav-link ${label.toLowerCase() === "apply now" ? "apply-btn" : ""} ${isActive ? "active-link" : ""}`
-                  }
-                  onClick={handleNavClick} // ← collapse on click
-                >
-                  {label}
-                </NavLink>
+        <div className="collapse navbar-collapse" ref={collapseRef}>
+          <ul className="navbar-nav ms-auto align-items-center">
+            {navLinks.map((item) => (
+              <li
+                key={item.label}
+                className={`nav-item ${item.dropdown ? "custom-dropdown" : ""}`}
+                onMouseLeave={() => {
+                  setOpenDropdown("");
+                  setOpenSubDropdown("");
+                }}
+              >
+                {/* Normal link */}
+                {!item.dropdown && (
+                  <NavLink
+                    to={item.path}
+                    className={`nav-link ${
+                      item.label.toLowerCase() === "apply now" ? "apply-btn" : ""
+                    } ${activeParent === item.label ? "active-link" : ""}`}
+                    onClick={() => handleNormalLinkClick(item.label, item.path)}
+                  >
+                    {item.label}
+                  </NavLink>
+                )}
+
+                {/* Dropdown */}
+                {item.dropdown && (
+                  <div className="custom-dropdown">
+                    <span
+                      className={`custom-dropdown-toggle ${
+                        activeParent === item.label ? "active-parent" : ""
+                      } ${openDropdown === item.label ? "open" : ""}`}
+                      onClick={() =>
+                        setOpenDropdown(
+                          openDropdown === item.label ? "" : item.label
+                        )
+                      }
+                    >
+                      {item.label} <span className="dropdown-arrow"></span>
+                    </span>
+
+                    <ul
+                      className={`custom-dropdown-menu ${
+                        openDropdown === item.label ? "show" : ""
+                      }`}
+                    >
+                      {item.dropdown.map((sub) => (
+                        <li key={sub.label} className="custom-dropdown-item-wrapper">
+                          {sub.subDropdown ? (
+                            <div
+                              className={`custom-dropdown-sub ${
+                                openSubDropdown === sub.label ? "open" : ""
+                              }`}
+                            >
+                              <span
+                                className="custom-dropdown-item"
+                                onClick={() =>
+                                  setOpenSubDropdown(
+                                    openSubDropdown === sub.label ? "" : sub.label
+                                  )
+                                }
+                              >
+                                {sub.label} <span className="dropdown-arrow"></span>
+                              </span>
+
+                              <ul className="custom-dropdown-menu sub-dropdown-menu">
+                                {sub.subDropdown.map((subSub) => (
+                                  <li key={subSub.label}>
+                                    <span
+                                      className="custom-dropdown-item"
+                                      onClick={() => {
+                                        if (subSub.path) {
+                                          handleNormalLinkClick(
+                                            item.label,
+                                            subSub.path
+                                          );
+                                        } else {
+                                          handleDropdownItemClick(
+                                            item.label,
+                                            subSub.hash,
+                                            "/admission-guidance"
+                                          );
+                                        }
+                                      }}
+                                    >
+                                      {subSub.label}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : (
+                            <span
+                              className="custom-dropdown-item"
+                              onClick={() =>
+                                sub.path
+                                  ? handleNormalLinkClick(item.label, sub.path)
+                                  : handleDropdownItemClick(
+                                      item.label,
+                                      sub.hash,
+                                      "/admission-guidance"
+                                    )
+                              }
+                            >
+                              {sub.label}
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </li>
             ))}
           </ul>

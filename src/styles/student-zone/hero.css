@@ -1,7 +1,7 @@
 .student-hero {
   background-color: rgb(12, 35, 64);
   color: #fff;
-  padding: 80px 20px;
+  padding: 2rem 3.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,21 +30,6 @@
   margin-bottom: 2rem;
 }
 
-.hero-btn {
-  background-color: rgb(163, 21, 58); /* maroon accent */
-  color: #fff;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hero-btn:hover {
-  background-color: #b91f48;
-}
 
 /* Responsive */
 @media (max-width: 768px) {

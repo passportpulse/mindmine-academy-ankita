@@ -14,7 +14,7 @@ export default function TraditionalUGPG() {
 
         <div className="tugpg-wrapper">
           {traditionalUGPGPrograms.map((program, idx) => (
-            <div className="tugpg-block" key={idx}>
+            <div className="tugpg-block" key={idx} id={program.hash}>
               <h3 className={`tugpg-level ${program.level.toLowerCase()}`}>
                 {program.level} Programs
               </h3>

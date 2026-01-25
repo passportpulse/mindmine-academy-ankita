@@ -12,14 +12,13 @@ export default function Footer() {
           {/* Column 1: About */}
           <div className="footer-col">
             <div className="footer-brand">
-              <img src={logo} alt="Agrasain Mindmine Logo" className="footer-logo" />
+              <img src={logo} alt="Mindmine Academy Logo" className="footer-logo" />
               <div className="footer-title">
-                <h3>AGRASAIN —</h3>
-                <h3>MINDMINE</h3>
+                <h3>MINDMINE ACADEMY</h3>
               </div>
             </div>
             <p>
-              Maharaja Agrasain–Mindmine Institute of Information & Technology,
+              Mindmine Academy,
               delivering UGC approved B.Voc degrees and GNM Nursing education.
             </p>
             <div className="footer-socials">
@@ -64,7 +63,7 @@ export default function Footer() {
             <h3>Contact Us</h3>
             <p className="footer-item">
               <MapPin className="footer-icon" />
-              Maharaja Agrasain Dham,<br />
+              Mindmine Academy,<br />
               Near Ghoraghata Railway Station,<br />
               Bagnan, Howrah – 711303
             </p>
@@ -74,15 +73,15 @@ export default function Footer() {
             </p>
             <p className="footer-item">
               <Mail className="footer-icon" />
-              <a href="mailto:info@agrasainmindminecollege.com">
-                info@agrasainmindminecollege.com
+              <a href="mailto:info@mindmineacademy.com">
+                info@mindmineacademy.com
               </a>
             </p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          &copy; 2026 Agrasain–Mindmine Institute. All rights reserved.
+          &copy; 2026 Mindmine Academy. All rights reserved.
         </div>
       </div>
     </footer>

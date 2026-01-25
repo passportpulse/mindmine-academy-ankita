@@ -25,7 +25,7 @@ const steps = [
   {
     step: "check",
     title: "Admission Confirmed",
-    desc: "Welcome to Maharaja Agrasain – Mindmine!",
+    desc: "Welcome to Mindmine Academy!",
   },
 ];
 

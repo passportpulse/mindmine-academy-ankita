@@ -1,6 +1,7 @@
 export const openBoardPrograms = [
   {
     id: "class10",
+    hash:"x",
     title: "Class X – Open Board",
     boards: ["ICSE", "CBSE", "WBBSE"],
     subjects: [
@@ -24,6 +25,7 @@ export const openBoardPrograms = [
   },
   {
     id: "class12",
+    hash:"xii",
     title: "Class XII – Open Board",
     boards: ["ICSE", "CBSE", "WBCHSE"],
     subjects: [
