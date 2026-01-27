@@ -8,11 +8,10 @@
 /* Main layout container */
 .container {
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: clamp(1rem, 4vw, 3rem);
-  padding-right: clamp(1rem, 4vw, 3rem);
+  margin-inline: auto;
+  padding-inline: clamp(0.75rem, 2.5vw, 2rem);
 }
+
 
 
 /* Large tablets */
@@ -25,14 +24,14 @@
 /* Tablets */
 @media (max-width: 768px) {
   .container {
-    padding-inline: 2rem;
+    padding-inline: 1rem;
   }
 }
 
 /* Phones */
 @media (max-width: 576px) {
   .container {
-    padding-inline: 1rem;
+    padding-inline: 0.75rem;
   }
 }
 html, body {

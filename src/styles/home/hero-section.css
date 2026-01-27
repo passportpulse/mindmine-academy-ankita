@@ -15,11 +15,15 @@
    CONTAINER
 ================================ */
 .hero-container {
+  max-width: 1200px;
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 3rem;
 }
+
+
 
 /* ===============================
    LEFT CONTENT
@@ -108,8 +112,8 @@
    RIGHT IMAGE
 ================================ */
 .hero-right {
-  flex: 1;
-  text-align: center;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .hero-right img {
