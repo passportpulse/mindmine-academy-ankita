@@ -33,3 +33,14 @@
     padding-inline: 1rem;
   }
 }
+body {
+  outline: 5px solid red;
+}
+
+.container {
+  outline: 3px solid blue;
+}
+
+section {
+  outline: 2px dashed green;
+}
