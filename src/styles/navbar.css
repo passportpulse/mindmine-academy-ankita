@@ -1,12 +1,21 @@
 /* ================= NAVBAR ================= */
+
 .navbar-custom {
   background-color: #fff;
-  padding: 0.5rem 0; /* vertical only */
+  padding: 0.5rem 0;
   box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.1);
   z-index: 999;
 }
 
-/* Brand logo + text */
+/* Layout: logo left, menu right */
+.navbar-custom .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ================= BRAND ================= */
+
 .navbar-custom .brand {
   display: flex;
   align-items: center;
@@ -41,11 +50,19 @@
   color: rgb(163, 21, 58);
 }
 
+/* ================= NAV LIST ================= */
+
 .navbar-custom .navbar-nav {
-  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
+  gap: 2px;        /* equal spacing everywhere */
+  margin-left: auto; /* push menu right */
 }
+
+/* ================= LINKS ================= */
 
 .navbar-custom .nav-link {
   color: oklch(37.3% 0.034 259.733);
@@ -53,11 +70,22 @@
   font-size: 0.85rem;
   position: relative;
   transition: color 0.3s;
+  padding: 6px 10px;
 }
 
 .navbar-custom .nav-link:hover {
   color: rgb(163, 21, 58);
 }
+
+.navbar-custom .nav-link.active-link:not(.apply-btn) {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  font-weight: 600;
+  color: rgb(163, 21, 58);
+}
+
+/* ================= APPLY BUTTON ================= */
 
 .navbar-custom .apply-btn {
   padding: 0.4rem 1.5rem;
@@ -74,45 +102,14 @@
   opacity: 0.85;
 }
 
-.navbar-custom .nav-link.active-link:not(.apply-btn) {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 2px;
-  font-weight: 600;
-  color: rgb(163, 21, 58);
-}
+/* ================= DROPDOWN ================= */
 
-@media (max-width: 992px) {
-  .navbar-custom .navbar-nav {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .navbar-custom .brand {
-    margin-bottom: 0.5rem;
-  }
-}
-.nav-item {
+.custom-dropdown {
   position: relative;
-}
-/* Dropdown */
-/* Navbar list styling */
-.navbar-nav {
-  list-style: none; /* remove bullets */
-  margin: 0;
-  padding: 0;
   display: flex;
-  gap: 20px;
   align-items: center;
 }
 
-/* Dropdown container */
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown toggle (parent) */
 .custom-dropdown-toggle {
   cursor: pointer;
   display: inline-flex;
@@ -121,14 +118,13 @@
   font-size: 0.85rem;
   color: #212529;
   transition: color 0.2s;
-  padding: 6px 0;
+  padding: 6px 10px;
 }
 
 .custom-dropdown-toggle:hover {
   color: rgb(163, 21, 58);
 }
 
-/* Active parent underline */
 .active-parent {
   text-decoration: underline;
   text-underline-offset: 6px;
@@ -137,23 +133,24 @@
   color: rgb(163, 21, 58);
 }
 
-/* Arrow shape */
+/* Dropdown arrow */
+
 .dropdown-arrow {
-  margin-left: 0.3rem; /* space between text and arrow */
+  margin-left: 0.3rem;
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid rgb(163, 21, 58); /* arrow color */
+  border-top: 5px solid rgb(163, 21, 58);
   transition: transform 0.3s ease;
 }
 
-/* Rotate arrow when dropdown is open */
 .custom-dropdown-toggle.open .dropdown-arrow {
   transform: rotate(180deg);
 }
 
-/* Dropdown menu */
+/* ================= DROPDOWN MENU ================= */
+
 .custom-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -171,7 +168,6 @@
   list-style: none;
 }
 
-/* Show dropdown */
 .custom-dropdown-menu.show {
   opacity: 1;
   transform: translateY(0);
@@ -179,21 +175,22 @@
 }
 
 /* Dropdown items */
+
 .custom-dropdown-item {
   display: block;
   padding: 8px 16px;
   cursor: pointer;
   font-size: 0.85rem;
   border-radius: 6px;
-  transition:
-    background 0.2s,
-    color 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .custom-dropdown-item:hover {
   background-color: rgba(163, 21, 58, 0.08);
   color: rgb(163, 21, 58);
 }
+
+/* ================= SUB DROPDOWN ================= */
 
 /* Nested sub-dropdown */
 .custom-dropdown-sub {
@@ -241,34 +238,4 @@
 /* Rotate 90deg down when open */
 .custom-dropdown-sub.open > .custom-dropdown-item .dropdown-arrow {
   transform: rotate(90deg);
-}
-/* Mobile responsive: stack menu */
-@media (max-width: 992px) {
-  .custom-dropdown-menu {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-    display: none;
-    box-shadow: none;
-    border-radius: 0;
-    transition: none !important;
-  }
-
-  .custom-dropdown-menu.show {
-    display: block;
-  }
-  .sub-dropdown-menu {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
-    display: none;
-    box-shadow: none;
-    transition: none !important;
-  }
-
-  .custom-dropdown-sub.open > .sub-dropdown-menu {
-    display: block;
-  }
 }

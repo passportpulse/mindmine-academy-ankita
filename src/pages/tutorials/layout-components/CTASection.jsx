@@ -1,6 +1,6 @@
 import React from "react";
-import "../../styles/main-menu/cta.css";
-import study from "../../assets/study.jpg";
+import "../../../styles/tutorials/cta.css";
+import study from "../../../assets/study.jpg";
 
 export default function CTASection() {
   return (

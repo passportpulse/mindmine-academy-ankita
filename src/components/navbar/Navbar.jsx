@@ -13,17 +13,17 @@ export default function Navbar() {
   const [openSubDropdown, setOpenSubDropdown] = useState(""); // sub-dropdown open
 
   // Active parent derived from location
-  const activeParent =
-    location.pathname.startsWith("/student-zone")
-      ? "Student Zone"
-      : location.pathname.startsWith("/admission-guidance")
+  const activeParent = location.pathname.startsWith("/student-zone")
+    ? "Student Zone"
+    : location.pathname.startsWith("/admission-guidance")
       ? "Admission Guidance"
       : navLinks.find((l) => l.path === location.pathname)?.label || "";
 
   // Close navbar on mobile
   const handleNavClick = () => {
     const collapseEl = collapseRef.current;
-    if (collapseEl.classList.contains("show")) collapseEl.classList.remove("show");
+    if (collapseEl.classList.contains("show"))
+      collapseEl.classList.remove("show");
   };
 
   // Scroll to section in the page
@@ -82,22 +82,20 @@ export default function Navbar() {
 
         {/* Links */}
         <div className="collapse navbar-collapse" ref={collapseRef}>
-          <ul className="navbar-nav ms-auto align-items-center">
+          <ul className="navbar-nav">
             {navLinks.map((item) => (
               <li
                 key={item.label}
                 className={`nav-item ${item.dropdown ? "custom-dropdown" : ""}`}
-                onMouseLeave={() => {
-                  setOpenDropdown("");
-                  setOpenSubDropdown("");
-                }}
               >
                 {/* Normal link */}
                 {!item.dropdown && (
                   <NavLink
                     to={item.path}
                     className={`nav-link ${
-                      item.label.toLowerCase() === "apply now" ? "apply-btn" : ""
+                      item.label.toLowerCase() === "apply now"
+                        ? "apply-btn"
+                        : ""
                     } ${activeParent === item.label ? "active-link" : ""}`}
                     onClick={() => handleNormalLinkClick(item.label, item.path)}
                   >
@@ -114,7 +112,7 @@ export default function Navbar() {
                       } ${openDropdown === item.label ? "open" : ""}`}
                       onClick={() =>
                         setOpenDropdown(
-                          openDropdown === item.label ? "" : item.label
+                          openDropdown === item.label ? "" : item.label,
                         )
                       }
                     >
@@ -127,7 +125,10 @@ export default function Navbar() {
                       }`}
                     >
                       {item.dropdown.map((sub) => (
-                        <li key={sub.label} className="custom-dropdown-item-wrapper">
+                        <li
+                          key={sub.label}
+                          className="custom-dropdown-item-wrapper"
+                        >
                           {sub.subDropdown ? (
                             <div
                               className={`custom-dropdown-sub ${
@@ -138,11 +139,14 @@ export default function Navbar() {
                                 className="custom-dropdown-item"
                                 onClick={() =>
                                   setOpenSubDropdown(
-                                    openSubDropdown === sub.label ? "" : sub.label
+                                    openSubDropdown === sub.label
+                                      ? ""
+                                      : sub.label,
                                   )
                                 }
                               >
-                                {sub.label} <span className="dropdown-arrow"></span>
+                                {sub.label}{" "}
+                                <span className="dropdown-arrow"></span>
                               </span>
 
                               <ul className="custom-dropdown-menu sub-dropdown-menu">
@@ -154,13 +158,13 @@ export default function Navbar() {
                                         if (subSub.path) {
                                           handleNormalLinkClick(
                                             item.label,
-                                            subSub.path
+                                            subSub.path,
                                           );
                                         } else {
                                           handleDropdownItemClick(
                                             item.label,
                                             subSub.hash,
-                                            "/admission-guidance"
+                                            "/admission-guidance",
                                           );
                                         }
                                       }}
@@ -180,7 +184,7 @@ export default function Navbar() {
                                   : handleDropdownItemClick(
                                       item.label,
                                       sub.hash,
-                                      "/admission-guidance"
+                                      "/admission-guidance",
                                     )
                               }
                             >

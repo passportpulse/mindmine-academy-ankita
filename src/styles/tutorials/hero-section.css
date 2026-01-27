@@ -1,25 +1,25 @@
-/* HERO */
-.menu-hero {
+/* ===== HERO SECTION ===== */
+.tutorial-hero-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-left: 4rem;
-  background: linear-gradient(135deg,#0c111f, #0d2645);
+  background: linear-gradient(135deg, #0c111f, #0d2645);
   color: white;
   align-items: center;
-  
 }
 
-.menu-hero-image img {
+.tutorial-hero-image img {
   width: 100%;
   clip-path: ellipse(85% 100% at 100% 50%);
 }
 
-.menu-hero-content h1{
+.tutorial-hero-content h1 {
   font-weight: 900;
   font-size: 2.5rem;
   margin-bottom: 12px;
 }
-.menu-hero-content p{
+
+.tutorial-hero-content p {
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.6;
@@ -27,7 +27,7 @@
 }
 
 /* BUTTONS */
-.primary-btn {
+.tutorial-hero-btn {
   background: rgb(163, 21, 58);
   color: white;
   border: none;
@@ -36,45 +36,45 @@
   font-weight: 600;
   cursor: pointer;
 }
-.primary-btn i {
+.tutorial-hero-btn i {
   transition: transform 0.3s ease;
 }
 
-.primary-btn:hover i {
+.tutorial-hero-btn:hover i {
   transform: translateX(4px);
 }
+
 /* ===== HERO RESPONSIVE ===== */
 
 /* Large tablets */
 @media (max-width: 1024px) {
-  .menu-hero {
+  .tutorial-hero-section {
     padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 
-  .menu-hero-content h1 {
+  .tutorial-hero-content h1 {
     font-size: 2.2rem;
   }
 }
 
 /* Tablets & below */
 @media (max-width: 900px) {
-  .menu-hero {
+  .tutorial-hero-section {
     grid-template-columns: 1fr;
     padding: 3rem 2rem;
     text-align: center;
     gap: 2rem;
   }
 
-  .menu-hero-content {
+  .tutorial-hero-content {
     order: 1;
   }
 
-  .menu-hero-image {
+  .tutorial-hero-image {
     order: 2;
   }
 
-  .menu-hero-image img {
+  .tutorial-hero-image img {
     clip-path: none;
     border-radius: 18px;
     max-width: 420px;
@@ -85,19 +85,19 @@
 
 /* Mobile */
 @media (max-width: 600px) {
-  .menu-hero {
+  .tutorial-hero-section {
     padding: 2.5rem 1.5rem;
   }
 
-  .menu-hero-content h1 {
+  .tutorial-hero-content h1 {
     font-size: 1.8rem;
   }
 
-  .menu-hero-content p {
+  .tutorial-hero-content p {
     font-size: 0.85rem;
   }
 
-  .primary-btn {
+  .tutorial-hero-btn {
     padding: 11px 24px;
     font-size: 0.9rem;
   }
@@ -105,11 +105,11 @@
 
 /* Small phones */
 @media (max-width: 420px) {
-  .menu-hero-content h1 {
+  .tutorial-hero-content h1 {
     font-size: 1.6rem;
   }
 
-  .menu-hero-content p {
+  .tutorial-hero-content p {
     font-size: 0.82rem;
   }
 }

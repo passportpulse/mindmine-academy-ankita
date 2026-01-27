@@ -5,8 +5,10 @@ import HomePage from "../pages/home/HomePage";
 import AboutUsPage from "../pages/about/AboutUsPage";
 import CompetitiveExamsPage from "../pages/competitive-exams/CompetitiveExamsPage";
 import AdmissionGuidancePage from "../pages/admission-guidance/AdmissionGuidancePage";
-import MainMenuPage from "../pages/main-menu/MainMenuPage";
-
+import JointEntrance from "../pages/tutorials/tutorial-pages/JointEntrance";
+import ForeignLanguage from "../pages/tutorials/tutorial-pages/ForeignLanguage";
+import MockTest from "../pages/tutorials/tutorial-pages/MockTest";
+import GeneralStudies from "../pages/tutorials/tutorial-pages/GeneralStudies";
 import ProcessPage from "../pages/process/ProcessPage";
 import CampusesPage from "../pages/campuses/CampusesPage";
 import ContactPage from "../pages/contact/ContactPage";
@@ -27,7 +29,10 @@ export default function AppRoutes() {
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/competitive-exams" element={<CompetitiveExamsPage />} />
         <Route path="/admission-guidance" element={<AdmissionGuidancePage />} />
-        <Route path="/main-menu" element={<MainMenuPage />} />
+        <Route path="/tutorials/joint-entrance" element={<JointEntrance />} />
+        <Route path="/tutorials/foreign-language" element={<ForeignLanguage />} />
+        <Route path="/tutorials/mock-test" element={<MockTest />} />
+        <Route path="/tutorials/general-studies" element={<GeneralStudies />} />
         <Route path="/student-zone/enquiry" element={<Enquiry />} />
         <Route path="/student-zone/apply" element={<Apply />} />
         <Route path="/student-zone/notices" element={<Notices />} />

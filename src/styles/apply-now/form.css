@@ -45,10 +45,10 @@ form {
 /* Section Titles */
 h2 {
   font-size: 1rem;
-  color: #2c3e50;
+  color: #48502c;
   margin-top: 20px;
   margin-bottom: 12px;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   padding-bottom: 3px;
 }
 

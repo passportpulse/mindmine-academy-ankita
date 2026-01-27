@@ -41,7 +41,6 @@
 .ce-hero-wrapper {
   position: relative;
   background-color: #0a1f38; /* deep blue */
-  padding-bottom: 100px;
   color: #fff;
 }
 
@@ -165,14 +164,14 @@
 }
 
 /* ================= HERO CARDS (FULL-WIDTH HANGING) ================= */
-.ce-hero-cards-wrapper {
+/* .ce-hero-cards-wrapper {
   position: relative;
   z-index: 10;
-  margin-top: -100px; /* pull cards up to overlap hero */
+  margin-top: -100px; 
   margin-bottom: 4rem;
-  width: 100vw; /* full width of viewport */
+  width: 100vw; 
   left: 0;
-  padding-left: 3.5rem; /* align with global container */
+  padding-left: 3.5rem; 
   padding-right: 3.5rem;
   box-sizing: border-box;
 }
@@ -209,21 +208,21 @@
   background: #fff;
   border-radius: 18px;
   padding: 32px;
-  flex: 1 1 400px; /* responsive growth/shrink */
+  flex: 1 1 400px;
   min-width: 280px;
   max-width: 400px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease;
-}
+} */
 
-.ce-hero-card:hover {
+/* .ce-hero-card:hover {
   transform: translateY(-10px);
-}
+} */
 
 /* ---------------- CARD TITLE ---------------- */
-.ce-card-title {
+/* .ce-card-title {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -243,10 +242,10 @@
   color: #898989;
   font-weight: 700;
   text-transform: uppercase;
-}
+} */
 
 /* ---------------- CARD ICONS ---------------- */
-.ce-card-icon {
+/* .ce-card-icon {
   font-size: 20px;
   padding: 12px;
   border-radius: 10px;
@@ -267,10 +266,10 @@
   color: rgb(117, 17, 44);
   background-color: rgba(227, 107, 107, 0.15);
   transform: scale(0.9);
-}
+} */
 
 /* ---------------- ROWS ---------------- */
-.ce-duration-row,
+/* .ce-duration-row,
 .ce-fees-row {
   display: flex;
   justify-content: space-between;
@@ -290,10 +289,10 @@
 .ce-fees-row:hover {
   background: rgba(163, 21, 58, 0.1);
   border-color: rgb(163, 21, 58);
-}
+} */
 
 /* Highlight fees row */
-.ce-fees-row.highlight {
+/* .ce-fees-row.highlight {
   background: linear-gradient(135deg, #0a1f38, #1d2d6f);
   color: #fff;
   padding: 16px;
@@ -325,10 +324,10 @@
   color: #a0a0a0 !important;
   margin-left: 4px;
   text-transform: lowercase !important;
-}
+} */
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .ce-hero-cards {
     justify-content: center;
     gap: 16px;
@@ -350,4 +349,4 @@
   .ce-hero-gradient-text {
     font-size: 2rem;
   }
-}
+} */

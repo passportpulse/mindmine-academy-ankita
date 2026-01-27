@@ -1,5 +1,5 @@
 import "../../styles/competitive-exams/hero-section.css";
-import { FaClock, FaRupeeSign } from "react-icons/fa";
+// import { FaClock, FaRupeeSign } from "react-icons/fa";
 
 export default function CompetitiveHeroSection() {
   return (
@@ -15,7 +15,7 @@ export default function CompetitiveHeroSection() {
 
             {/* Headings */}
             <h1 className="ce-hero-heading">Mindmine Academy for</h1>
-            <h1 className="ce-hero-gradient-text">Competitive Exams</h1>
+            <h1 className="ce-hero-gradient-text">Competitive Exams (MACE)</h1>
 
             {/* Hero Text */}
             <div className="ce-hero-text">
@@ -39,10 +39,10 @@ export default function CompetitiveHeroSection() {
       </section>
 
       {/* ================= HERO CARDS (FLOATING) ================= */}
-      <section className="ce-hero-cards-wrapper">
+      {/* <section className="ce-hero-cards-wrapper">
         <div className="ce-hero-cards">
           {/* Card 1: Course Duration */}
-          <div className="ce-hero-card">
+          {/* <div className="ce-hero-card">
             <div className="ce-card-title">
               <FaClock className="ce-card-icon clock" />
               <div className="ce-card-text">
@@ -53,21 +53,25 @@ export default function CompetitiveHeroSection() {
             <div className="ce-course-duration">
               <div className="ce-duration-row">
                 <span>Level 1</span>
-                <span className="ce-fees-duration-right">6 Months</span>
+                <span className="ce-fees-duration-right">3 Months</span>
               </div>
               <div className="ce-duration-row">
                 <span>Level 2</span>
-                <span className="ce-fees-duration-right">1 Year</span>
+                <span className="ce-fees-duration-right">6 Months</span>
               </div>
               <div className="ce-duration-row">
                 <span>Level 3</span>
-                <span className="ce-fees-duration-right">2 Years</span>
+                <span className="ce-fees-duration-right">12 Months</span>
+              </div>
+              <div className="ce-duration-row">
+                <span>Level 4</span>
+                <span className="ce-fees-duration-right">24 Months</span>
               </div>
             </div>
-          </div>
+          </div> */} 
 
           {/* Card 2: Affordable Fees */}
-          <div className="ce-hero-card">
+          {/* <div className="ce-hero-card">
             <div className="ce-card-title">
               <FaRupeeSign className="ce-card-icon rupee" />
               <div className="ce-card-text">
@@ -78,9 +82,9 @@ export default function CompetitiveHeroSection() {
             <div className="ce-course-fees">
               <div className="ce-fees-row highlight">
                 <div className="ce-fees-text">
-                  <span>Level 1 & 2</span>
+                  <span>Level 4</span>
                   <span>
-                    ₹1200 <span className="ce-per-month">/ month</span>
+                    6 Months <span className="ce-per-month">/ month</span>
                   </span>
                 </div>
               </div>
@@ -90,9 +94,9 @@ export default function CompetitiveHeroSection() {
                 <span className="ce-fees-row-right">₹1500 / month</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </div> */}
+        {/* </div> */}
+      {/* </section> */}
     </>
   );
 }

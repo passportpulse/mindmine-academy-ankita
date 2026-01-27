@@ -26,7 +26,15 @@ export const navLinks = [
       { label: "Research Program", hash: "#research" },
     ],
   },
-  { label: "Main Menu", path: "/main-menu" },
+  {
+    label: "Tutorials",
+    dropdown: [
+      { label: "Joint Entrance", path: "/tutorials/joint-entrance" },
+      { label: "Foreign Language", path: "/tutorials/foreign-language" },
+      { label: "Mock Test", path: "/tutorials/mock-test" },
+      { label: "General Studies", path: "/tutorials/general-studies" },
+    ],
+  },
   {
     label: "Student Zone",
     dropdown: [
