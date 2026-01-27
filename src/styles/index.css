@@ -5,34 +5,31 @@
   box-sizing: border-box;
 }
 
-/* Main container for all content (navbar, sections, footer) */
+/* Main layout container */
 .container {
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  /* padding-left: 3rem;  
-  padding-right: 3rem; */
+  margin-inline: auto;
+  padding-inline: 3rem;   /* desktop padding FIX */
 }
 
-/* Large tablets / small laptops */
+/* Large tablets */
 @media (max-width: 992px) {
   .container {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-inline: 2.5rem;
   }
 }
 
-/* Tablets / medium phones */
+/* Tablets */
 @media (max-width: 768px) {
   .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-inline: 2rem;
   }
 }
 
-/* Small phones */
+/* Phones */
 @media (max-width: 576px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-inline: 1rem;
   }
 }
