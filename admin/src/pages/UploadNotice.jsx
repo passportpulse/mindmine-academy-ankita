@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/notice.css";
 
-const API = "http://localhost:5000";
+const API = "https://mindmine-academy.onrender.com";
 
 export default function UploadNotice() {
   const [title, setTitle] = useState("");

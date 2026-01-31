@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/applications.css";
 
-const API = "http://localhost:5000";
+const API = "https://mindmine-academy.onrender.com";
 
 export default function Applications() {
   const [applications, setApplications] = useState([]);

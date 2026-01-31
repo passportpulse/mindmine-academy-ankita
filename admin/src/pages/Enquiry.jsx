@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/enquiry.css";
 
-const API = "http://localhost:5000";
+const API = "https://mindmine-academy.onrender.com";
 
 export default function Enquiry() {
   const [enquiries, setEnquiries] = useState([]);
