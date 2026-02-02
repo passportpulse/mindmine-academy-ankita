@@ -3,7 +3,7 @@ const router = express.Router();
 const { registerAdmin, loginAdmin } = require("../controllers/adminController");
 
 // POST /api/admin/register
-router.post("/register", registerAdmin);
+// router.post("/register", registerAdmin);
 
 // POST /api/admin/login
 router.post("/login", loginAdmin);
