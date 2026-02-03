@@ -98,3 +98,35 @@
     font-size: 1.8rem;
   }
 }
+.tugpg-eligibility-pill {
+  display: inline-flex;           /* keeps content in one line & adjusts width */
+  align-items: center;            /* vertically center text/icon */
+  padding: 0.35rem 0.8rem;        /* vertical + horizontal padding */
+  border-radius: 50px;            /* pill shape */
+  background: #e0f2fe;            /* light blue */
+  color: #0369a1;                 /* text color */
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.3px;
+  white-space: nowrap;            /* prevent wrapping */
+  max-width: max-content;         /* ensures width only fits content */
+  box-sizing: border-box;         /* padding included in width */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.tugpg-eligibility-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode */
+.tugpg-block.dark .tugpg-eligibility-pill {
+  background: #1e293b;
+  color: #38bdf8;
+}
+.eligibility-label {
+  margin-right: 0.4rem; /* space after colon */
+}
+

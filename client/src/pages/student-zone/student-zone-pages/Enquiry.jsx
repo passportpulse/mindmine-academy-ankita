@@ -7,26 +7,43 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Enquiry() {
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
-    subject: "",
+    lastQualification: "",
+    course: "",
     message: "",
   });
 
+  const [showOtherInput, setShowOtherInput] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false); // boolean
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCourseChange = (e) => {
+    const value = e.target.value;
+
+    if (value === "Other") {
+      setShowOtherInput(true);
+      setFormData({ ...formData, course: "" }); // clear for manual typing
+    } else {
+      setShowOtherInput(false);
+      setFormData({ ...formData, course: value });
+    }
+  };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
     console.log(formData);
-    // ✅ FRONTEND VALIDATION
+    e.preventDefault();
+
     if (
       !formData.name ||
+      !formData.phone ||
       !formData.email ||
-      !formData.subject ||
+      !formData.lastQualification ||
+      !formData.course ||
       !formData.message
     ) {
       toast.error("All fields are required");
@@ -47,28 +64,33 @@ export default function Enquiry() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        },
+          body: JSON.stringify(formData), // only course is sent
+        }
       );
 
       let data = {};
       try {
-        data = await res.json(); // parse JSON only if present
-      } catch {
-        console.warn("No JSON response received");
-      }
+        data = await res.json();
+      } catch {}
 
       if (!res.ok) {
-        throw new Error(data.message || `Server returned ${res.status}`);
+        throw new Error(data.message || "Something went wrong");
       }
 
-      // ✅ Success
-      toast.success(data.message || "Your enquiry has been sent successfully!");
+      toast.success("Enquiry sent successfully!");
       setSuccess(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        lastQualification: "",
+        course: "",
+        message: "",
+      });
+      setShowOtherInput(false);
     } catch (err) {
-      console.error("Form submission error:", err);
-      toast.error(err.message || "Failed to send enquiry. Please try again.");
+      toast.error("Failed to send enquiry");
     } finally {
       setLoading(false);
     }
@@ -76,10 +98,7 @@ export default function Enquiry() {
 
   return (
     <>
-      <Hero
-        title="Enquiry"
-        description="Submit your queries or questions here."
-      />
+      <Hero title="Enquiry" description="Submit your queries here." />
 
       <section className="enquiry-section">
         <div className="enquiry-card">
@@ -100,21 +119,61 @@ export default function Enquiry() {
                 placeholder="Enter your full name"
               />
 
+              <label>Phone *</label>
+              <input
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Enter phone number"
+              />
+
               <label>Email *</label>
               <input
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Enter your email"
+                placeholder="Enter email"
               />
 
-              <label>Subject *</label>
+              <label>Last Qualification *</label>
               <input
-                name="subject"
-                value={formData.subject}
+                name="lastQualification"
+                value={formData.lastQualification}
                 onChange={handleChange}
-                placeholder="Subject"
+                placeholder="Your last qualification"
               />
+
+              <label>Course Enquiry *</label>
+              <select value={showOtherInput ? "Other" : formData.course} onChange={handleCourseChange}>
+                <option value="" disabled>
+                  -- Select Course --
+                </option>
+                <option value="Level 1 – Foundation">Level 1 – Foundation</option>
+                <option value="Level 2 – Beginner Competitive">Level 2 – Beginner Competitive</option>
+                <option value="Level 3 – Advanced Competitive">Level 3 – Advanced Competitive</option>
+                <option value="Level 4 – Professional Mastery">Level 4 – Professional Mastery</option>
+                <option value="Special Programs">Special Programs</option>
+                <option value="Class 10">Class X</option>
+                <option value="Class 12">Class XII</option>
+                <option value="UG">Traditional UG</option>
+                <option value="PG">Traditional PG</option>
+                <option value="Council Course">Council Course</option>
+                <option value="Research Program">Research Program</option>
+                <option value="JE">Joint Entrance</option>
+                <option value="Foreign Language">Foreign Language</option>
+                <option value="Mock Test">Mock Test</option>
+                <option value="General Studies">General Studies</option>
+                <option value="Other">Other</option>
+              </select>
+
+              {showOtherInput && (
+                <input
+                  name="course"
+                  value={formData.course}
+                  onChange={handleChange}
+                  placeholder="Enter your course"
+                />
+              )}
 
               <label>Message *</label>
               <textarea
@@ -126,22 +185,14 @@ export default function Enquiry() {
               />
 
               <button className="btn-submit" disabled={loading}>
-                {loading ? "Sending..." : "Submit Message"}
+                {loading ? "Sending..." : "Submit Enquiry"}
               </button>
             </form>
           )}
         </div>
       </section>
 
-      {/* Toast Container */}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-      />
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }

@@ -21,6 +21,7 @@ export const openBoardPrograms = [
       "Environmental Science",
       "Home Science",
     ],
+    eligibility: "Students who completed Class 8 or failed in Class 9/10 can apply.",
   },
   {
     id: "class12",
@@ -45,6 +46,7 @@ export const openBoardPrograms = [
       "Statistics",
       "Economics",
     ],
+    eligibility: "Students who have passed Class 10 or equivalent are eligible.",
     dark: true,
   },
 ];

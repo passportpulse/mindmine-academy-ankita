@@ -3,6 +3,7 @@ export const traditionalUGPGPrograms = [
     level: "UG",
     hash: "ug",
     title: "Undergraduate Programs",
+    eligibility: "Students must have completed Class 12 or equivalent.",
     categories: [
       {
         name: "Arts",
@@ -122,6 +123,7 @@ export const traditionalUGPGPrograms = [
     level: "PG",
     hash: "pg",
     title: "Postgraduate Programs",
+    eligibility: "Graduates in the relevant field can apply.",
     categories: [
       {
         name: "Arts",

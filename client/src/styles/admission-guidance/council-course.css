@@ -83,3 +83,17 @@
     font-size: 1.7rem;
   }
 }
+/* ===== Eligibility Pill ===== */
+.council-eligibility-pill {
+  display: inline-flex;            /* pill fits content width */
+  padding: 0.35rem 0;        
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+/* Eligibility label bold and spacing */
+.council-eligibility-pill strong {
+  margin-right: 0.3rem;            /* gap after 'Eligibility:' */
+}
+

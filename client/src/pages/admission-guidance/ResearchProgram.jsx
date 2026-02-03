@@ -3,6 +3,8 @@ import { phdSubjectsData } from "../../data/researchProgramData";
 import "../../styles/admission-guidance/research-program.css";
 
 export default function ResearchProgram() {
+  const eligibility = "Master's degree in relevant discipline required.";
+
   return (
     <section className="rp-section" id="research">
       <div className="container">
@@ -15,6 +17,11 @@ export default function ResearchProgram() {
               doctoral programs across multiple disciplines.
             </p>
           </header>
+
+          {/* Eligibility Line */}
+          <p className="rp-eligibility">
+            <strong>Eligibility:</strong> {eligibility}
+          </p>
 
           <div className="rp-subjects-grid">
             {phdSubjectsData.map((subject, index) => (

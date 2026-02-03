@@ -72,3 +72,46 @@
   color: rgb(163, 21, 58);
   font-size: 1rem;
 }
+/* ===== Eligibility Top Highlight Box ===== */
+
+.eligibility-box {
+  margin-bottom: 1.3rem;
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #eef5ff, #f8fbff);
+  border: 1px solid #dbe7ff;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+/* Small label effect */
+.eligibility-box h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+.eligibility-box p {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* ===== Dark Card Version ===== */
+
+.open-board-card.dark .eligibility-box {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-color: #334155;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.open-board-card.dark .eligibility-box h4 {
+  color: #38bdf8;
+}
+
+.open-board-card.dark .eligibility-box p {
+  color: #e5e7eb;
+}

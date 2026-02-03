@@ -19,6 +19,13 @@ export default function TraditionalUGPG() {
                 {program.level} Programs
               </h3>
 
+              {/* Eligibility Section */}
+              {program.eligibility && (
+                <span className="tugpg-eligibility-pill">
+                  <strong className="eligibility-label">Eligibility :</strong>{program.eligibility}
+                </span>
+              )}
+
               <div className="tugpg-categories">
                 {program.categories.map((category, i) => (
                   <div className="tugpg-category-card" key={i}>
