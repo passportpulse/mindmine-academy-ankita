@@ -9,56 +9,49 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [openDropdown, setOpenDropdown] = useState(""); // top-level dropdown open
-  const [openSubDropdown, setOpenSubDropdown] = useState(""); // sub-dropdown open
+  const [openDropdown, setOpenDropdown] = useState("");
+  const [openSubDropdown, setOpenSubDropdown] = useState("");
 
-  // Active parent derived from location
   const activeParent = location.pathname.startsWith("/student-zone")
     ? "Student Zone"
-    : location.pathname.startsWith("/admission-guidance")
-      ? "Admission Guidance"
-      : navLinks.find((l) => l.path === location.pathname)?.label || "";
+    : location.pathname.startsWith("/tutorials")
+      ? "Tutorials"
+      : location.pathname.startsWith("/competitive-exams")
+        ? "Competitive Exams"
+        : location.pathname.startsWith("/admission-guidance")
+          ? "Admission Guidance"
+          : navLinks.find((l) => l.path === location.pathname)?.label || "";
 
-  // Close navbar on mobile
   const handleNavClick = () => {
     const collapseEl = collapseRef.current;
     if (collapseEl.classList.contains("show"))
       collapseEl.classList.remove("show");
   };
 
-  // Scroll to section in the page
-  const scrollToSection = (hash) => {
-    const section = document.querySelector(hash);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+  // 🎯 Smart scroll (auto navigates to correct page)
+  const scrollToSection = (hash, pagePath) => {
+    if (location.pathname !== pagePath) {
+      navigate(pagePath);
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+    } else {
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  // Handle normal link click
   const handleNormalLinkClick = (label, path) => {
     handleNavClick();
     setOpenDropdown("");
     setOpenSubDropdown("");
-    if (location.pathname !== path) {
-      navigate(path);
-    }
-  };
-
-  // Handle dropdown item click (with optional section scroll)
-  const handleDropdownItemClick = (parentLabel, hash, path = null) => {
-    handleNavClick();
-    setOpenDropdown("");
-    setOpenSubDropdown("");
-    if (path && location.pathname !== path) {
-      navigate(path, { replace: true });
-      setTimeout(() => scrollToSection(hash), 50);
-    } else {
-      scrollToSection(hash);
-    }
+    if (location.pathname !== path) navigate(path);
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-custom fixed">
       <div className="container">
-        {/* Logo */}
         <NavLink
           to="/"
           className="brand d-flex align-items-center gap-2"
@@ -71,16 +64,13 @@ export default function Navbar() {
           </div>
         </NavLink>
 
-        {/* Hamburger */}
         <button
           className="navbar-toggler"
-          type="button"
           onClick={() => collapseRef.current.classList.toggle("show")}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Links */}
         <div className="collapse navbar-collapse" ref={collapseRef}>
           <ul className="navbar-nav">
             {navLinks.map((item) => (
@@ -88,7 +78,6 @@ export default function Navbar() {
                 key={item.label}
                 className={`nav-item ${item.dropdown ? "custom-dropdown" : ""}`}
               >
-                {/* Normal link */}
                 {!item.dropdown && (
                   <NavLink
                     to={item.path}
@@ -103,7 +92,6 @@ export default function Navbar() {
                   </NavLink>
                 )}
 
-                {/* Dropdown */}
                 {item.dropdown && (
                   <div className="custom-dropdown">
                     <span
@@ -155,14 +143,14 @@ export default function Navbar() {
                                     <span
                                       className="custom-dropdown-item"
                                       onClick={() => {
+                                        handleNavClick();
+                                        setOpenDropdown("");
+                                        setOpenSubDropdown("");
+
                                         if (subSub.path) {
-                                          handleNormalLinkClick(
-                                            item.label,
-                                            subSub.path,
-                                          );
+                                          navigate(subSub.path);
                                         } else {
-                                          handleDropdownItemClick(
-                                            item.label,
+                                          scrollToSection(
                                             subSub.hash,
                                             "/admission-guidance",
                                           );
@@ -178,15 +166,20 @@ export default function Navbar() {
                           ) : (
                             <span
                               className="custom-dropdown-item"
-                              onClick={() =>
-                                sub.path
-                                  ? handleNormalLinkClick(item.label, sub.path)
-                                  : handleDropdownItemClick(
-                                      item.label,
-                                      sub.hash,
-                                      "/admission-guidance",
-                                    )
-                              }
+                              onClick={() => {
+                                handleNavClick();
+                                setOpenDropdown("");
+                                setOpenSubDropdown("");
+
+                                if (sub.path) {
+                                  navigate(sub.path);
+                                } else {
+                                  scrollToSection(
+                                    sub.hash,
+                                    item.path || location.pathname,
+                                  );
+                                }
+                              }}
                             >
                               {sub.label}
                             </span>

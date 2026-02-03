@@ -49,22 +49,6 @@
   margin-bottom: 16px;
 }
 
-.board-tags {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 22px;
-  flex-wrap: wrap;
-}
-
-.board-tags span {
-  padding: 6px 14px;
-  font-size: 0.8rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.06);
-  color: #374151;
-  font-weight: 600;
-}
-
 .open-board-card.dark .board-tags span {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;

@@ -15,9 +15,9 @@ export default function Hero() {
             career opportunities with our expert counselors.
           </p>
 
-          <button className="call-btn">
+          <a href="tel:7595077657" className="call-btn" style={{textDecoration:'none'}}>
             <FaPhoneAlt /> Call for Counseling
-          </button>
+          </a>
         </div>
 
         {/* STEPS */}

@@ -1,7 +1,17 @@
 export const navLinks = [
   { label: "Home", path: "/" },
   { label: "About Us", path: "/about-us" },
-  { label: "Competitive Exams", path: "/competitive-exams" },
+  {
+    label: "Competitive Exams",
+    path: "/competitive-exams",
+    dropdown: [
+      { label: "Level 1 – Foundation", hash: "#level1" },
+      { label: "Level 2 – Beginner Competitive", hash: "#level2" },
+      { label: "Level 3 – Advanced Competitive", hash: "#level3" },
+      { label: "Level 4 – Professional Mastery", hash: "#level4" },
+      { label: "Special Programs", hash: "#level5" },
+    ],
+  },
   {
     label: "Admission Guidance",
     path: "/admission-guidance",

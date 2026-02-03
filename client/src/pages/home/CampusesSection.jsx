@@ -4,29 +4,33 @@ import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 const campuses = [
   {
     type: "main",
-    tag: "Main Campus",
-    title: "Howrah Main Campus",
+    tag: "City Office",
+    title: "Moulali Campus",
     address:
-      "Mindmine Academy, Near Ghoraghata Railway Station, Bagnan, Howrah – 711303",
-    phone: "7595077569 / 6289086116",
-    map: "https://www.google.com/maps?q=Bagnan+Howrah&output=embed",
-  },
-  {
-    type: "city",
-    tag: "City Campus",
-    title: "Kolkata City Campus",
-    address: "52A Indian Mirror Street, 1st Floor, Kolkata – 700013",
-    phone: "7595077567 / 7605057139",
-    map: "https://www.google.com/maps?q=Indian+Mirror+Street+Kolkata&output=embed",
-  },
-  {
-    type: "south",
-    tag: "South Campus",
-    title: "Kolkata South Campus",
-    address: "64 James Long Sarani, Bakshipally Joka, Kolkata – 700104",
-    phone: "7595077566 / 7605057138",
-    map: "https://www.google.com/maps?q=James+Long+Sarani+Joka&output=embed",
+      "52A Indian Mirror Street, Taltala, Opp. G.D. Hospital Kolkata – 700013",
+    phone: "7595077657 / 7605057139",
+    map: "https://maps.google.com/maps?q=22.5616997,88.3619713&z=17&output=embed",
+    mapLink: "https://www.google.com/maps?q=22.5616997,88.3619713&z=17&hl=en",
     highlight: true,
+  },
+  {
+    type: "sub",
+    tag: "Sub Office",
+    title: "Thakurpukur Campus",
+    address: "64 James Long Sarani, Near Joka Metro Station, Kolkata – 700104",
+    phone: "7595077656 / 7605057138",
+    map: "https://www.google.com/maps?q=22.4542307,88.3041509&z=17&hl&output=embed",
+    mapLink: "https://www.google.com/maps?q=22.4542307,88.3041509&z=17&hl=en",
+  },
+  {
+    type: "regional",
+    tag: "Regional Office",
+    title: "Bagnan Campus",
+    address:
+      "Maharaja Agrasain Dham, Near Ghoraghata Railway Station, Howrah - 711303",
+    phone: "6289086116 / 7595077659",
+    map: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl&output=embed",
+    mapLink: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl=en",
   },
 ];
 
@@ -69,7 +73,7 @@ export default function CampusesSection() {
               </div>
 
               <a
-                href={campus.map}
+                href={campus.mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="map-btn"

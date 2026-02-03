@@ -11,40 +11,41 @@ export default function ExcellenceSection() {
   const features = [
     {
       icon: <FaUniversity />,
-      title: "UGC Approved B.Voc Degrees",
-      desc: "All Bachelor of Vocation degrees are awarded by Sikkim Professional University (Approved by UGC, Govt. of India).",
+      title: "Recognized Learning Programs",
+      desc: "Our programs follow structured, industry-aligned standards to ensure quality education and career readiness.",
     },
     {
       icon: <FaTools />,
-      title: "Skill-Focused Courses",
-      desc: "Programs built to develop real-world practical skill sets for future-ready employment opportunities.",
+      title: "Practical Skill Development",
+      desc: "Hands-on training focused on real-world projects and modern tools used by professionals.",
     },
     {
       icon: <FaLaptopCode />,
-      title: "Modern Industry Curriculum",
-      desc: "Courses include Data Science, AI, Multimedia, Animation, VFX, Software & Web Technology.",
+      title: "Updated Tech Curriculum",
+      desc: "Covering trending technologies like Web Development, AI, Data Science, Design, and more.",
     },
     {
       icon: <FaChalkboardTeacher />,
-      title: "Expert Learning Environment",
-      desc: "Students learn directly from professionals and industry specialists in their domain.",
+      title: "Experienced Mentors",
+      desc: "Learn from skilled instructors with real industry experience and teaching expertise.",
     },
   ];
 
   return (
     <section className="excellence-section">
       <div className="container">
+
         {/* HEADER */}
         <div className="excellence-header">
           <h4>Why Choose Us</h4>
-          <h2>Excellence in Vocational Education</h2>
+          <h2>Learning That Builds Real Skills</h2>
           <p>
-            We offer advanced B.Voc programs in Data Science, Animation, Web
-            Development & Nursing, designed to build professional skills with
-            University recognized degrees.
+            We focus on practical education, modern technologies, and expert guidance 
+            to help students grow confidently in today’s competitive world.
           </p>
         </div>
-      {/* GRID CARDS */}
+
+        {/* GRID CARDS */}
         <div className="excellence-grid">
           {features.map((item, index) => (
             <div className="excellence-card" key={index}>
@@ -54,6 +55,7 @@ export default function ExcellenceSection() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

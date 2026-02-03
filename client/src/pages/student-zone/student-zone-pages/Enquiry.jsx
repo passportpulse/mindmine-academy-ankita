@@ -51,22 +51,24 @@ export default function Enquiry() {
         },
       );
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Server Error");
+      let data = {};
+      try {
+        data = await res.json(); // parse JSON only if present
+      } catch {
+        console.warn("No JSON response received");
+      }
+
+      if (!res.ok) {
+        throw new Error(data.message || `Server returned ${res.status}`);
+      }
 
       // ✅ Success
-      toast.success("Your enquiry has been sent successfully!");
-      setSuccess(true); // hide form
-      setFormData({
-        // reset form
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+      toast.success(data.message || "Your enquiry has been sent successfully!");
+      setSuccess(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
-      console.error(err);
-      toast.error("Failed to send enquiry. Please try again.");
+      console.error("Form submission error:", err);
+      toast.error(err.message || "Failed to send enquiry. Please try again.");
     } finally {
       setLoading(false);
     }

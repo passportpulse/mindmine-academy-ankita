@@ -14,17 +14,17 @@ export default function AdmissionCTA() {
           </p>
 
           <div className="cta-contact">
-            <a href="tel:7595077569" className="cta-item">
+            <a href="tel:7595077657" className="cta-item">
               <FaPhoneAlt />
-              <span>7595077569</span>
+              <span>7595077657</span>
             </a>
 
             <a
-              href="mailto:info@mindmineacademy.com"
+              href="mailto:info.mindmine2026@gmail.com"
               className="cta-item"
             >
               <FaEnvelope />
-              <span>info@mindmineacademy.com</span>
+              <span>info.mindmine2026@gmail.com</span>
             </a>
           </div>
 

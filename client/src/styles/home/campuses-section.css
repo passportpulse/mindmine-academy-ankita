@@ -66,12 +66,12 @@
   white-space: nowrap;
 }
 
-.campus-main .campus-tag {
+.campus-sub .campus-tag {
   background: rgba(230, 198, 206, 0.15);
   color: #a31b3a;
 }
 
-.campus-city .campus-tag {
+.campus-regional .campus-tag {
   background: rgba(183, 190, 210, 0.12);
   color: #1f3c88;
 }

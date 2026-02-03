@@ -20,13 +20,6 @@ export default function OpenBoard() {
               className={`open-board-card ${program.dark ? "dark" : ""}`}
             >
               <h3>{program.title}</h3>
-
-              <div className="board-tags">
-                {program.boards.map((board, i) => (
-                  <span key={i}>{board}</span>
-                ))}
-              </div>
-
               <div className="subjects-grid">
                 {program.subjects.map((sub, index) => (
                   <div className="subject-item" key={index}>
