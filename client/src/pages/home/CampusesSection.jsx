@@ -22,16 +22,16 @@ const campuses = [
     map: "https://www.google.com/maps?q=22.4542307,88.3041509&z=17&hl&output=embed",
     mapLink: "https://www.google.com/maps?q=22.4542307,88.3041509&z=17&hl=en",
   },
-  {
-    type: "regional",
-    tag: "Regional Office",
-    title: "Bagnan Campus",
-    address:
-      "Maharaja Agrasain Dham, Near Ghoraghata Railway Station, Howrah - 711303",
-    phone: "6289086116 / 7595077659",
-    map: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl&output=embed",
-    mapLink: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl=en",
-  },
+  // {
+  //   type: "regional",
+  //   tag: "Regional Office",
+  //   title: "Bagnan Campus",
+  //   address:
+  //     "Maharaja Agrasain Dham, Near Ghoraghata Railway Station, Howrah - 711303",
+  //   phone: "6289086116 / 7595077659",
+  //   map: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl&output=embed",
+  //   mapLink: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl=en",
+  // },
 ];
 
 export default function CampusesSection() {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "../../../styles/student-zone/enquiry.css";
-import Hero from "../Hero";
+import "../styles/enquiry.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -64,14 +63,14 @@ export default function Enquiry() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData), // only course is sent
-        }
+          body: JSON.stringify(formData), 
+        },
       );
 
       let data = {};
       try {
         data = await res.json();
-      } catch {}
+      } catch(err) {console.log(err)}
 
       if (!res.ok) {
         throw new Error(data.message || "Something went wrong");
@@ -90,6 +89,7 @@ export default function Enquiry() {
       });
       setShowOtherInput(false);
     } catch (err) {
+      console.log(err);
       toast.error("Failed to send enquiry");
     } finally {
       setLoading(false);
@@ -98,8 +98,6 @@ export default function Enquiry() {
 
   return (
     <>
-      <Hero title="Enquiry" description="Submit your queries here." />
-
       <section className="enquiry-section">
         <div className="enquiry-card">
           {success && (
@@ -144,14 +142,25 @@ export default function Enquiry() {
               />
 
               <label>Course Enquiry *</label>
-              <select value={showOtherInput ? "Other" : formData.course} onChange={handleCourseChange}>
+              <select
+                value={showOtherInput ? "Other" : formData.course}
+                onChange={handleCourseChange}
+              >
                 <option value="" disabled>
                   -- Select Course --
                 </option>
-                <option value="Level 1 – Foundation">Level 1 – Foundation</option>
-                <option value="Level 2 – Beginner Competitive">Level 2 – Beginner Competitive</option>
-                <option value="Level 3 – Advanced Competitive">Level 3 – Advanced Competitive</option>
-                <option value="Level 4 – Professional Mastery">Level 4 – Professional Mastery</option>
+                <option value="Level 1 – Foundation">
+                  Level 1 – Foundation
+                </option>
+                <option value="Level 2 – Beginner Competitive">
+                  Level 2 – Beginner Competitive
+                </option>
+                <option value="Level 3 – Advanced Competitive">
+                  Level 3 – Advanced Competitive
+                </option>
+                <option value="Level 4 – Professional Mastery">
+                  Level 4 – Professional Mastery
+                </option>
                 <option value="Special Programs">Special Programs</option>
                 <option value="Class 10">Class X</option>
                 <option value="Class 12">Class XII</option>

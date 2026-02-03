@@ -12,13 +12,13 @@
   max-width: 1000px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   padding: 0; /* remove default padding, header handles top padding */
 }
 
 /* Header */
 .form-header {
-  background-color: rgb(163,21,58); /* Maroon */
+  background-color: rgb(163, 21, 58); /* Maroon */
   color: #fff;
   padding: 20px 25px;
   border-top-left-radius: 15px;
@@ -76,7 +76,9 @@ label {
   color: #555;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 8px 10px;
   border-radius: 8px;
@@ -85,7 +87,9 @@ input, select, textarea {
   transition: all 0.2s;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-color: rgb(163, 21, 58);
   box-shadow: 0 0 3px rgba(163, 21, 58, 0.3);
@@ -95,12 +99,33 @@ textarea {
   resize: vertical;
   min-height: 60px;
 }
+.form-buttons {
+  display: flex;
+  justify-content: center; /* centers child buttons */
+  gap: 10px; /* space between Back and Submit buttons */
+  margin-top: 20px;
+}
+/* Minimal Back Button Styling */
+.back-btn {
+  background-color: transparent; /* no fill */
+  color: #333; /* dark text */
+  border: 1px solid #ccc; /* subtle border */
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
 
+.back-btn:hover {
+  background-color: #f0f0f0; /* light hover */
+  border-color: #999;
+}
 /* Button */
 .submit-btn {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
+  display: inline-block; /* Shrinks width to fit content */
+  /* Space from previous elements */
+  padding: 12px 24px; /* Top-bottom & left-right padding */
   background-color: rgb(163, 21, 58);
   color: #fff;
   font-size: 0.9rem;
@@ -112,12 +137,18 @@ textarea {
 }
 
 .submit-btn:hover {
+  background-color: rgb(143, 18, 50); /* optional hover effect */
+}
+
+.submit-btn:hover {
   background-color: #b91f48;
 }
 
 /* Responsive */
-@media(max-width: 768px){
-  .grid-2, .grid-3, .form-group.full-width {
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .form-group.full-width {
     grid-template-columns: 1fr;
     grid-column: span 1;
   }
@@ -133,7 +164,7 @@ textarea {
   background: #f0fff4;
   border: 2px solid #38a169;
   border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.4s ease;
 }
 
@@ -150,8 +181,14 @@ textarea {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .error-box {
   text-align: center;

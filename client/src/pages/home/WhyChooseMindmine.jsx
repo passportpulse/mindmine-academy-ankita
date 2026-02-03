@@ -15,53 +15,51 @@ export default function WhyChooseMindmine() {
           <div className="why-mindmine-left">
             <h2>
               Why Students Choose <br />
-              <span>Mindmine?</span>
+              <span>Our Programs?</span>
             </h2>
 
             <p>
-              We offer high-value vocational programs that combine academic
-              strength, industry practice and career development to build
-              confident professionals.
+              We offer practical, career-focused programs that combine
+              academic knowledge, hands-on skills, and professional
+              development to prepare students for success in any field.
             </p>
 
-            <button className="why-mindmine-btn" onClick={() => (window.location.href = "/apply-now")}>Join Us Today</button>
+            <button className="why-mindmine-btn" onClick={() => (window.location.href = "/apply-now")}>
+              Join Us Today
+            </button>
           </div>
 
           {/* RIGHT SIDE */}
           <div className="why-mindmine-right">
             <div className="why-card">
               <FaUniversity />
-              <h4>UGC Approved Degrees</h4>
+              <h4>Accredited Programs</h4>
               <p>
-                All B.Voc programs are awarded by Sikkim Professional University
-                (UGC Approved).
+                All programs are recognized and adhere to national educational standards.
               </p>
             </div>
 
             <div className="why-card">
               <FaTools />
-              <h4>Skill-Based Education</h4>
+              <h4>Practical Learning</h4>
               <p>
-                Hands-on learning in Data Science, Animation, Web Tech & Nursing
-                programs.
+                Hands-on training ensures students gain real-world skills and experience.
               </p>
             </div>
 
             <div className="why-card">
               <LiaCertificateSolid />
-              <h4>Recognized Programs</h4>
+              <h4>Industry Recognition</h4>
               <p>
-                Nursing under WBNC & INC, Vocational degrees under National
-                Education Framework.
+                Our courses are valued by employers and prepare students for diverse careers.
               </p>
             </div>
 
             <div className="why-card">
               <FaBriefcase />
-              <h4>Placement Support</h4>
+              <h4>Career Support</h4>
               <p>
-                Dedicated placement assistance & internship opportunities for
-                all students.
+                Students receive guidance for internships, placements, and professional growth.
               </p>
             </div>
           </div>

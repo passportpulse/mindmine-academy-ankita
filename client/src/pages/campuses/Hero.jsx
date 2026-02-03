@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../../styles/campus/hero.css";
-import campus1 from "../../assets/howrah-campus.jpg";
-import campus2 from "../../assets/kolkata-campus.avif";
+import campus1 from "../../assets/moulali.png";
+import campus2 from "../../assets/joka.png";
+import campus3 from "../../assets/bagnan.png";
 
 const campuses = [
   {
@@ -31,20 +32,20 @@ const campuses = [
     mapLink: "https://www.google.com/maps?q=22.4542307,88.3041509&z=17&hl=en",
     image: campus2,
   },
-  {
-    name: "Bagnan Campus",
-    address:
-      "Maharaja Agrasain Dham, Near Ghoraghata Railway Station, Howrah – 711303",
-    desc: "Bagnan Campus provides accessible education, industry skill development, and a student-friendly environment for South Kolkata learners.",
-    programs: [
-      "Community Programs",
-      "Skill Development",
-      "Innovation Labs",
-      "Student Hub",
-    ],
-    mapLink: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl=en",
-    image: campus2,
-  },
+  // {
+  //   name: "Bagnan Campus",
+  //   address:
+  //     "Maharaja Agrasain Dham, Near Ghoraghata Railway Station, Howrah – 711303",
+  //   desc: "Bagnan Campus provides accessible education, industry skill development, and a student-friendly environment for South Kolkata learners.",
+  //   programs: [
+  //     "Community Programs",
+  //     "Skill Development",
+  //     "Innovation Labs",
+  //     "Student Hub",
+  //   ],
+  //   mapLink: "https://www.google.com/maps?q=22.4522204,87.9443786&z=17&hl=en",
+  //   image: campus3,
+  // },
 ];
 
 export default function CampusSection() {

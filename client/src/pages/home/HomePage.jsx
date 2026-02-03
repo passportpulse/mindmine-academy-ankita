@@ -13,7 +13,7 @@ export default function Homepage() {
       <HomeHeroSection />
       <ExcellenceSection/>
       <AcademicsSection/>
-      <SkillProgramsSection/>
+      {/* <SkillProgramsSection/> */}
       <AdmissionProcess/>
       <CampusesSection/>
       <WhyChooseMindmine/>

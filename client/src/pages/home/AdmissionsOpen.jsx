@@ -12,8 +12,8 @@ export default function AdmissionsOpen() {
           <div className="admissions-text">
             <h2>Admissions Open — {currentYear}</h2>
             <p>
-              Apply now for B.Voc (AI, Animation & Software Development) and GNM
-              Nursing programs. Very limited seats across 3 campuses.
+              Admissions Open! Explore our career-focused programs in
+              Technology, Design, and Healthcare. Limited seats — enroll now!
             </p>
 
             <div className="admissions-buttons">
@@ -24,7 +24,12 @@ export default function AdmissionsOpen() {
                 Apply for Admission
               </button>
 
-              <a href="/brochure.pdf" target="_blank" rel="noopener noreferrer" style={{textDecoration:'none'}}>
+              <a
+                href="/brochure.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
                 <button className="admissions-brochure-btn">
                   <FaDownload style={{ marginRight: "8px" }} />
                   Download Brochure

@@ -14,9 +14,10 @@ exports.getAllEnquiries = async (req, res) => {
 
 // Create enquiry and send email
 exports.createEnquiry = async (req, res) => {
-  const { name, email, subject, message } = req.body;
+  console.log(req.body);
+  const { name, email, phone, course, lastQualification, message } = req.body;
 
-  if (!name || !email || !subject || !message) {
+  if (!name || !email || !phone || !course || !lastQualification || !message) {
     return res.status(400).json({
       success: false,
       message: "All fields are required",
@@ -25,7 +26,14 @@ exports.createEnquiry = async (req, res) => {
 
   try {
     // 1️⃣ Save to DB immediately
-    const enquiry = await Enquiry.create({ name, email, subject, message });
+    const enquiry = await Enquiry.create({
+      name,
+      email,
+      phone,
+      course,
+      lastQualification,
+      message,
+    });
 
     // 2️⃣ Send emails in background, no await
     setImmediate(async () => {
@@ -73,6 +81,8 @@ exports.createEnquiry = async (req, res) => {
     });
   } catch (err) {
     console.error("Enquiry creation error:", err);
-    res.status(500).json({ success: false, message: "Failed to submit enquiry" });
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to submit enquiry" });
   }
 };

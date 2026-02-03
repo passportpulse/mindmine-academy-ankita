@@ -8,33 +8,31 @@ export default function HeroSection() {
           {/* LEFT */}
           <div className="about-hero-left">
             <span className="about-badge">
-              Skill Education for Future Careers
+              Skill-Based Education for Future Careers
             </span>
 
             <h1 className="about-hero-title">
               Building Professional Careers Through
-              <span> Vocational Education</span>
+              <span> Industry-Aligned Programs</span>
             </h1>
 
             <p className="about-hero-desc">
-              Mindmine Academy offers UGC-approved B.Voc degrees and
-              Nursing programs, shaping students into job-ready professionals
-              across West Bengal.
+              Our academy offers career-focused programs across Technology, Design, and Healthcare, shaping students into job-ready professionals.
             </p>
 
             {/* HIGHLIGHT BOX */}
             <div className="about-highlight">
               <div>
-                <h4>UGC Approved</h4>
-                <p>B.Voc Degrees</p>
+                <h4>Industry-Aligned</h4>
+                <p>Professional Programs</p>
               </div>
               <div>
-                <h4>3 Campuses</h4>
-                <p>Howrah & Kolkata</p>
+                <h4>Multiple Campuses</h4>
+                <p>Accessible City Locations</p>
               </div>
               <div>
-                <h4>Nursing</h4>
-                <p>WBNC & INC</p>
+                <h4>Recognized</h4>
+                <p>Accredited Courses & Certifications</p>
               </div>
             </div>
           </div>
@@ -44,24 +42,21 @@ export default function HeroSection() {
             <div className="about-info-card">
               <h3>Who We Are</h3>
               <p>
-                A vocational institution delivering industry-aligned programs in
-                AI, Animation, Software Development and Nursing.
+                An institution delivering industry-focused programs in emerging fields and practical skill development.
               </p>
             </div>
 
             <div className="about-info-card">
               <h3>Our Campuses</h3>
               <p>
-                Three city-accessible campuses offering hands-on training and
-                professional learning environments.
+                Multiple city-accessible campuses offering hands-on training and professional learning environments.
               </p>
             </div>
 
             <div className="about-info-card">
               <h3>Recognition</h3>
               <p>
-                Degrees awarded by UGC-approved university and Nursing programs
-                governed by WBNC & INC.
+                Accredited programs and recognized certifications ensuring quality education and career readiness.
               </p>
             </div>
           </div>

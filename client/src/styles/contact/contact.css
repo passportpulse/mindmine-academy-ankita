@@ -1,42 +1,48 @@
-/* ============================= */
-/* Contact Section Styles        */
-/* ============================= */
+/* ================= CONTACT SECTION ================= */
 
-/* Container */
+.contact-section {
+  background: #f8f9fc;
+}
+
 .contact-section .container {
   display: flex;
   gap: 2rem;
   padding: 4rem 3.5rem;
-  flex-wrap: nowrap; /* left & right side by side */
+  align-items: stretch; /* 🔥 equal height columns */
 }
+/* FORCE left & right to follow tallest height */
+.contact-left,
+.contact-right {
+  align-self: stretch;
+}
+/* ================= LEFT SIDE ================= */
 
-/* Left Info Cards */
-/* ---------- Left Info Cards (Improved) ---------- */
 .contact-left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  justify-content: space-around;
+  gap:1rem
 }
 
 .contact-card {
   background: #fff;
   padding: 1.8rem 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border-left: 5px solid #a3153a; /* subtle accent bar on left */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border-left: 5px solid #a3153a;
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Icon with circle background */
 .contact-card .icon {
   font-size: 2rem;
   color: #fff;
@@ -44,12 +50,8 @@
   padding: 0.6rem;
   border-radius: 50%;
   margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Card heading */
 .contact-card h4 {
   font-size: 1.15rem;
   font-weight: 600;
@@ -57,98 +59,52 @@
   color: #222;
 }
 
-/* Card description */
 .contact-card p {
   font-size: 0.95rem;
   color: #555;
   line-height: 1.6;
 }
 
+/* ================= RIGHT SIDE ================= */
 
-/* Right Form */
 .contact-right {
-  flex: 1; /* equal to left for smaller form */
-  max-width: 500px; /* limit form width */
-  background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Form heading */
-.contact-right h3 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 1.2rem;
-  color: #222;
-}
-
-/* Form Fields */
-.contact-form {
+/* Stretch Enquiry component to match height */
+.contact-right > * {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+}
+.contact-right .enquiry-section {
+  padding: 0;
+  background: transparent;
+}
+.contact-right .enquiry-card {
+  padding: 1rem 0.8rem;
 }
 
-.contact-form label {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #333;
+/* If form is long → scroll nicely */
+.contact-right {
+  overflow-y: auto;
 }
 
-.contact-form input,
-.contact-form textarea {
-  padding: 0.7rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 0.95rem;
-  width: 100%;
-  transition: border 0.3s;
-}
+/* ================= RESPONSIVE ================= */
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #a3153a;
-}
-
-/* Submit Button */
-.btn-submit {
-  margin-top: 1rem;
-  background: #a3153a;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.btn-submit:hover {
-  background: #8c1130;
-}
-
-/* Responsive: tablet */
 @media (max-width: 1024px) {
   .contact-section .container {
     flex-direction: column;
-    align-items: center; /* center the form */
-  }
-
-  .contact-left,
-  .contact-right {
-    width: 100%;
+    padding: 3rem 2rem;
   }
 
   .contact-right {
-    max-width: 600px;
+    overflow: visible;
   }
 }
 
-/* Responsive: mobile */
 @media (max-width: 480px) {
   .contact-card .icon {
     font-size: 1.6rem;
@@ -161,40 +117,4 @@
   .contact-card p {
     font-size: 0.85rem;
   }
-
-  .contact-right h3 {
-    font-size: 1.4rem;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 0.85rem;
-    padding: 0.6rem 0.8rem;
-  }
-
-  .btn-submit {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-  }
-}
-.success-box {
-  text-align: center;
-  padding: 40px;
-  border: 2px solid #22c55e;
-  border-radius: 14px;
-  background: #f0fdf4;
-}
-
-.success-box h2 {
-  color: #16a34a;
-}
-
-.error-box {
-  margin-top: 12px;
-  padding: 14px;
-  border-radius: 8px;
-  background: #fef2f2;
-  border: 1px solid #ef4444;
-  color: #b91c1c;
-  text-align: center;
 }

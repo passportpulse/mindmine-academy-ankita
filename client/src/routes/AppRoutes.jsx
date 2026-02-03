@@ -15,12 +15,12 @@ import ContactPage from "../pages/contact/ContactPage";
 import ApplyNowPage from "../pages/apply-now/ApplyNowPage";
 import CourseDetailsPage from "../pages/home/CourseDetailsPage";
 
-import Notices from "../pages/student-zone/student-zone-pages/Notices";
-import Payment from "../pages/student-zone/student-zone-pages/Payment";
-import Enquiry from "../pages/student-zone/student-zone-pages/Enquiry";
+import Notices from "../pages/student-zone/Notices";
+import Payment from "../pages/student-zone/Payment";
+import Enquiry from "../components/Enquiry";
 import NotFoundPage from "../pages/not-found/NotFoundPage";
 import ApplyForm from "../components/ApplyForm";
-import CheckStatus from "../pages/student-zone/student-zone-pages/CheckStatus";
+import CheckStatus from "../pages/student-zone/CheckStatus";
 
 export default function AppRoutes() {
   return (

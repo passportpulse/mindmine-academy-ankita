@@ -1,118 +1,59 @@
-/* Container for the course details page */
-.course-details {
+.single-course {
   padding: 4rem 0;
-  background-color: #f9f9fb; /* soft light background */
-  min-height: 100vh;
-}
-/* Course image/banner at the top */
-.course-banner {
-  width: 100%;
-  max-height: 400px; /* control banner height */
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 40px;
+  background: #f9f9f9;
 }
 
-.course-banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* ensures the image covers area nicely */
-  display: block;
-}
-
-/* Main heading */
-.course-details h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #161f42;
-  margin-bottom: 20px;
-}
-
-/* Meta info: type + duration */
-.course-meta {
-  display: flex;
-  gap: 25px;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 30px;
-  font-size: 1rem;
-  align-items: center;
-}
-
-.course-meta span svg {
-  vertical-align: middle;
-  margin-right: 6px;
-  color: #a31b3a; /* timer icon accent */
-  font-size: 1.2rem;
-}
-
-/* Short description paragraph */
-.course-description {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #444;
-  margin-bottom: 40px;
-}
-
-/* Section headings (Modules, Eligibility) */
-.course-section {
-  margin-bottom: 35px;
-}
-
-.course-section h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #161f42;
-  margin-bottom: 15px;
-}
-
-/* Modules list styling */
-.course-section ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.course-section li {
-  margin-bottom: 10px;
-  font-size: 1rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-}
-
-.course-section li::before {
-  content: "✔️";
-  margin-right: 10px;
-  color: #a31b3a; /* pink checkmark */
-}
-.course-details .apply-btn {
-  background-color: #a31b3a;
-  color: #fff;
-  padding: 14px 36px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  border-radius: 6px;
+.back-btn {
+  background: none;
   border: none;
+  font-weight: 600;
+  margin-bottom: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  color: #a31b3a;
 }
 
-.course-details .apply-btn:hover {
-  background-color: #8e1732;
-  transform: translateY(-2px);
+.single-course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
 }
-/* Responsive for smaller screens */
+
+.single-course-grid img {
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.single-course-info h2 {
+  font-size: 2rem;
+  color: #161f42;
+}
+
+.full-desc {
+  margin: 15px 0;
+  color: #555;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.single-course-info ul {
+  padding-left: 18px;
+}
+
+.single-course-info li {
+  margin-bottom: 6px;
+  color: #444;
+}
+
 @media (max-width: 768px) {
-  .course-details {
-    padding: 60px 4%;
-  }
-
-  .course-details h1 {
-    font-size: 2rem;
-  }
-
-  .course-meta {
-    flex-direction: column;
-    gap: 10px;
+  .single-course-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -9,21 +9,25 @@ import {
 } from "react-icons/fa";
 
 const features = [
-  { icon: <FaUniversity />, title: "B.Voc", subtitle: "UGC Approved" },
+  {
+    icon: <FaUniversity />,
+    title: "Accredited Programs",
+    subtitle: "High-Quality Education"
+  },
   {
     icon: <FaCheckCircle />,
-    title: "100% Placement Assistance",
-    subtitle: "Career-Ready Students",
+    title: "Career-Oriented",
+    subtitle: "Prepared for Real-World Jobs"
   },
   {
     icon: <FaIndustry />,
-    title: "Industry Ready",
-    subtitle: "Hands-On Training",
+    title: "Industry-Ready",
+    subtitle: "Hands-On Practical Training"
   },
   {
     icon: <FaTools />,
-    title: "Skill Focused",
-    subtitle: "Practical & Relevant Skills",
+    title: "Skill-Focused",
+    subtitle: "Practical & Relevant Skills"
   },
 ];
 
@@ -34,8 +38,8 @@ export default function WhyStandApart() {
         <div className="stand-header">
           <h2>Why We Stand Apart</h2>
           <p>
-            Empowering students with practical skills, industry exposure, and
-            career-focused education.
+            Empowering students with practical skills, real-world experience, and
+            career-focused learning across various fields.
           </p>
         </div>
 

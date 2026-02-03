@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../../styles/student-zone/notices.css";
-import Hero from "../Hero";
+import "../../styles/student-zone/notices.css";
 
 const API = "https://mindmine-academy.onrender.com";
 
@@ -27,11 +26,6 @@ export default function Notices() {
 
   return (
     <>
-      <Hero
-        title="Notices"
-        description="Check the latest updates and notifications."
-      />
-
       <section className="notices-section blackboard">
         {/* Show single notice */}
         {currentNotice && (

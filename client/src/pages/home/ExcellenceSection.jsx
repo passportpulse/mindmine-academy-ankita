@@ -2,7 +2,7 @@ import React from "react";
 import {
   FaUniversity,
   FaTools,
-  FaLaptopCode,
+  FaUsers,
   FaChalkboardTeacher,
 } from "react-icons/fa";
 import "../../styles/home/excellence-section.css";
@@ -11,23 +11,23 @@ export default function ExcellenceSection() {
   const features = [
     {
       icon: <FaUniversity />,
-      title: "Recognized Learning Programs",
-      desc: "Our programs follow structured, industry-aligned standards to ensure quality education and career readiness.",
+      title: "Accredited",
+      desc: "Our institution is officially recognized, ensuring credibility and trust in the education we provide.",
     },
     {
       icon: <FaTools />,
-      title: "Practical Skill Development",
-      desc: "Hands-on training focused on real-world projects and modern tools used by professionals.",
+      title: "Practical Approach",
+      desc: "We emphasize hands-on learning, preparing students to apply knowledge effectively in real-world situations.",
     },
     {
-      icon: <FaLaptopCode />,
-      title: "Updated Tech Curriculum",
-      desc: "Covering trending technologies like Web Development, AI, Data Science, Design, and more.",
+      icon: <FaUsers />,
+      title: "Student Focus",
+      desc: "A supportive atmosphere where students are guided, encouraged, and empowered to succeed.",
     },
     {
       icon: <FaChalkboardTeacher />,
-      title: "Experienced Mentors",
-      desc: "Learn from skilled instructors with real industry experience and teaching expertise.",
+      title: "Experienced Faculty",
+      desc: "Learn from knowledgeable educators with extensive teaching experience and dedication to student growth.",
     },
   ];
 
@@ -38,10 +38,9 @@ export default function ExcellenceSection() {
         {/* HEADER */}
         <div className="excellence-header">
           <h4>Why Choose Us</h4>
-          <h2>Learning That Builds Real Skills</h2>
+          <h2>Excellence in Education</h2>
           <p>
-            We focus on practical education, modern technologies, and expert guidance 
-            to help students grow confidently in today’s competitive world.
+            We are committed to nurturing talent, fostering practical skills, and guiding students towards a successful future.
           </p>
         </div>
 

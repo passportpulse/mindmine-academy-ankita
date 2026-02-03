@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Hero from "../Hero";
-import "../../../styles/student-zone/check-status.css";
+import "../../styles/student-zone/check-status.css";
 
 const API = "https://mindmine-academy.onrender.com";
 
@@ -37,11 +36,6 @@ export default function CheckStatus() {
 
   return (
     <>
-      <Hero
-        title="Enquiry"
-        description="Submit your queries or questions here."
-      />
-
       <section className="status-section">
         <div className="status-card">
           <h2>Check Application Status</h2>
