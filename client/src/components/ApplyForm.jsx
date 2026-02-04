@@ -112,6 +112,7 @@ export default function ApplyForm() {
           </div>
 
           <p>A confirmation email has been sent 📩</p>
+          <p><strong>Check your inbox or spam folder for our confirmation email.</strong></p>
         </div>
       </div>
     );
