@@ -34,7 +34,7 @@ export default function Enquiry() {
   };
 
   const handleSubmit = async (e) => {
-    console.log(formData);
+    // console.log(formData);
     e.preventDefault();
 
     if (
@@ -89,7 +89,7 @@ export default function Enquiry() {
 
       setShowOtherInput(false);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       toast.error(err.message || "Failed to send enquiry");
     }
   };

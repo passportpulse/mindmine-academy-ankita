@@ -89,15 +89,17 @@ export default function Applications() {
             <button className="close-btn" onClick={() => setSelectedApp(null)}>
               ×
             </button>
-            <div style={{ marginTop: 20 }}>
+            <div className="modal-grid">
               {Object.entries(selectedApp).map(([key, value]) => {
                 if (key === "_id" || key === "__v") return null;
                 if (key === "createdAt" || key === "updatedAt")
                   value = new Date(value).toLocaleString();
+
                 return (
-                  <p key={key}>
-                    <strong>{key}:</strong> {value?.toString()}
-                  </p>
+                  <div className="modal-field" key={key}>
+                    <span>{key.replace(/([A-Z])/g, " $1")}</span>
+                    <p>{value?.toString() || "-"}</p>
+                  </div>
                 );
               })}
             </div>
