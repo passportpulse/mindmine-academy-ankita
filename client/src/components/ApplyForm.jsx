@@ -82,7 +82,7 @@ export default function ApplyForm() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
-        }
+        },
       );
 
       const data = await res.json();
@@ -112,7 +112,11 @@ export default function ApplyForm() {
           </div>
 
           <p>A confirmation email has been sent 📩</p>
-          <p><strong>Check your inbox or spam folder for our confirmation email.</strong></p>
+          <p>
+            <strong>
+              Check your inbox or spam folder for our confirmation email.
+            </strong>
+          </p>
         </div>
       </div>
     );
@@ -125,7 +129,9 @@ export default function ApplyForm() {
         <div className="form-header">
           <h1>Student Enrollment Form</h1>
           <p className="form-info">
-            Step {step}: {step === 1 ? "Personal & Family Info" : "Academic Info"} | Session: 2025-26
+            Step {step}:{" "}
+            {step === 1 ? "Personal & Family Info" : "Academic Info"} | Session:
+            2025-26
           </p>
         </div>
 
@@ -134,15 +140,37 @@ export default function ApplyForm() {
             <>
               <h2>Campus & Course Info</h2>
               <div className="grid-2">
-                <input name="campus" placeholder="Campus" onChange={handleChange} />
-                <input name="campusLocation" placeholder="Campus Location" onChange={handleChange} />
-                <input className="full-width" name="course" placeholder="Course Applied For *" onChange={handleChange} />
+                <input
+                  name="campus"
+                  placeholder="Campus"
+                  onChange={handleChange}
+                />
+                <input
+                  name="campusLocation"
+                  placeholder="Campus Location"
+                  onChange={handleChange}
+                />
+                <input
+                  className="full-width"
+                  name="course"
+                  placeholder="Course Applied For *"
+                  onChange={handleChange}
+                />
               </div>
 
               <h2>Student Details</h2>
               <div className="grid-2">
-                <input name="fullName" placeholder="Full Name *" onChange={handleChange} />
-                <input type="date" name="dob" onChange={handleChange} />
+                <input
+                  name="fullName"
+                  placeholder="Full Name *"
+                  onChange={handleChange}
+                />
+                <input
+                  type="date"
+                  name="dob"
+                  max={new Date().toISOString().split("T")[0]} // today’s date
+                  onChange={handleChange}
+                />
 
                 <select name="gender" onChange={handleChange}>
                   <option value="">Gender</option>
@@ -159,39 +187,101 @@ export default function ApplyForm() {
                   <option>OBC</option>
                 </select>
 
-                <input name="aadhaar" placeholder="Aadhaar No" onChange={handleChange} />
+                <input
+                  name="aadhaar"
+                  placeholder="Aadhaar No"
+                  onChange={handleChange}
+                />
                 <input value="Indian" disabled />
-                <textarea className="full-width" name="address" placeholder="Full Address" onChange={handleChange} />
+                <textarea
+                  className="full-width"
+                  name="address"
+                  placeholder="Full Address"
+                  onChange={handleChange}
+                />
                 <input name="city" placeholder="City" onChange={handleChange} />
                 <input value="West Bengal" disabled />
-                <input name="pin" placeholder="Pin Code" onChange={handleChange} />
-                <input name="phone" placeholder="Contact No *" onChange={handleChange} />
-                <input name="email" type="email" placeholder="Email *" onChange={handleChange} />
+                <input
+                  name="pin"
+                  placeholder="Pin Code"
+                  onChange={handleChange}
+                />
+                <input
+                  name="phone"
+                  placeholder="Contact No *"
+                  onChange={handleChange}
+                />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email *"
+                  onChange={handleChange}
+                />
               </div>
 
               <h2>Father's Info</h2>
               <div className="grid-2">
-                <input name="fatherName" placeholder="Father Name" onChange={handleChange} />
-                <input name="fatherOccupation" placeholder="Occupation" onChange={handleChange} />
-                <input name="fatherPhone" placeholder="Phone" onChange={handleChange} />
+                <input
+                  name="fatherName"
+                  placeholder="Father Name"
+                  onChange={handleChange}
+                />
+                <input
+                  name="fatherOccupation"
+                  placeholder="Occupation"
+                  onChange={handleChange}
+                />
+                <input
+                  name="fatherPhone"
+                  placeholder="Phone"
+                  onChange={handleChange}
+                />
               </div>
 
               <h2>Mother's Info</h2>
               <div className="grid-2">
-                <input name="motherName" placeholder="Mother Name" onChange={handleChange} />
-                <input name="motherOccupation" placeholder="Occupation" onChange={handleChange} />
-                <input name="motherPhone" placeholder="Phone" onChange={handleChange} />
+                <input
+                  name="motherName"
+                  placeholder="Mother Name"
+                  onChange={handleChange}
+                />
+                <input
+                  name="motherOccupation"
+                  placeholder="Occupation"
+                  onChange={handleChange}
+                />
+                <input
+                  name="motherPhone"
+                  placeholder="Phone"
+                  onChange={handleChange}
+                />
               </div>
 
               <h2>Local Guardian</h2>
               <div className="grid-3">
-                <input name="guardianName" placeholder="Name" onChange={handleChange} />
-                <input name="guardianRelation" placeholder="Relation" onChange={handleChange} />
-                <input name="guardianPhone" placeholder="Phone" onChange={handleChange} />
+                <input
+                  name="guardianName"
+                  placeholder="Name"
+                  onChange={handleChange}
+                />
+                <input
+                  name="guardianRelation"
+                  placeholder="Relation"
+                  onChange={handleChange}
+                />
+                <input
+                  name="guardianPhone"
+                  placeholder="Phone"
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="form-buttons">
-                <button type="button" className="submit-btn" onClick={handleNext}>
+                <button
+                  type="button"
+                  className="submit-btn"
+                  onClick={handleNext}
+                >
                   Next: Academic Info
                 </button>
               </div>
@@ -202,11 +292,31 @@ export default function ApplyForm() {
             <>
               <h2>Academic Information</h2>
               <div className="grid-2">
-                <input name="lastQualification" placeholder="Last Qualification *" onChange={handleChange} />
-                <input name="passingYear" placeholder="Year of Passing *" onChange={handleChange} />
-                <input name="previousCourse" placeholder="Previous Course" onChange={handleChange} />
-                <input name="previousInstitute" placeholder="Previous Institute" onChange={handleChange} />
-                <input name="percentage" placeholder="Percentage / GPA" onChange={handleChange} />
+                <input
+                  name="lastQualification"
+                  placeholder="Last Qualification *"
+                  onChange={handleChange}
+                />
+                <input
+                  name="passingYear"
+                  placeholder="Year of Passing *"
+                  onChange={handleChange}
+                />
+                <input
+                  name="previousCourse"
+                  placeholder="Previous Course"
+                  onChange={handleChange}
+                />
+                <input
+                  name="previousInstitute"
+                  placeholder="Previous Institute"
+                  onChange={handleChange}
+                />
+                <input
+                  name="percentage"
+                  placeholder="Percentage / GPA"
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="form-buttons">
