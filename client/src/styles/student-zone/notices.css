@@ -1,77 +1,102 @@
-.blackboard {
-  background: rgb(12, 35, 64);
-  padding: 3rem 1rem;
-  border-radius: 16px;
+/* Main section */
+.notices-section {
+  padding: 40px 20px;
   max-width: 900px;
-  margin: 2rem auto;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+  margin-block:rem;
+  margin: auto;
 }
 
+/* Theme background */
+.blackboard {
+  /* background: linear-gradient(145deg, #081a33, #0d254a); */
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  margin-block: 4rem;
+}
 
-.single-notice {
+/* Heading */
+.notice-heading {
   text-align: center;
-  color: #fff;
+  color: rgb(163,21,58);
+  font-size: 28px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
-.single-notice img {
-  max-width: 90%;
-  max-height: 400px;
-  border-radius: 10px;
-  border: 4px solid #c7a14a;
-  background: #fff;
-}
-
-.notice-content h3 {
-  margin-top: 1rem;
-  font-size: 1.6rem;
-}
-
-.notice-content span {
-  opacity: 0.8;
-  font-size: 0.9rem;
-}
-
-/* Pagination */
-
-
-.pagination {
-  margin-top: 2rem;
+/* Notice list */
+.notice-list {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.pagination button {
-  background: #fff;
-  color: rgb(12, 35, 64);
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+/* Notice card */
+.notice-item {
+  background: #0f2b55;
+  padding: 15px 18px;
+  border-radius: 10px;
+  border-left: 5px solid rgb(163,21,58);
+  transition: all 0.25s ease;
+}
+
+.notice-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+/* Title row */
+.notice-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   cursor: pointer;
+  color: #eaf0ff;
+}
+
+.notice-title strong {
+  font-size: 16px;
   font-weight: 600;
+  flex: 1;
 }
 
-.pagination button:hover {
-  background: #c3c2c2;
+/* Date */
+.date {
+  font-size: 13px;
+  color: #b8c7ff;
+  white-space: nowrap;
 }
 
-.pagination button.active {
-  background: #c7a14a;
-  color: #000;
+/* Description */
+.notice-description {
+  margin-top: 12px;
+  color: #dbe4ff;
+  line-height: 1.6;
+  font-size: 15px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 10px;
 }
 
-.pagination .arrow {
-  font-size: 18px;
-  padding: 8px 14px;
-  background: #fff;
+/* Empty text */
+.notices-section p {
+  text-align: center;
+  color: #b8c7ff;
+  font-size: 16px;
 }
 
-.pagination .arrow:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-.dots {
-  color: #fff;
-  padding: 8px 6px;
-  font-weight: bold;
+/* Mobile */
+@media (max-width: 600px) {
+  .notice-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notice-heading {
+    font-size: 22px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
 }
