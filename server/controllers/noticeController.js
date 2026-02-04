@@ -2,28 +2,26 @@ const Notice = require("../models/Notice");
 const fs = require("fs");
 const path = require("path");
 
-// ---------------------------
 // Create a new notice
-// ---------------------------
 exports.createNotice = async (req, res) => {
   try {
     const { title } = req.body;
-    const filePath = req.file?.path;
 
-    if (!filePath) {
+    if (!req.file) {
       return res.status(400).json({ success: false, message: "File is required" });
     }
 
-    // Make relative path for frontend
-    const relativePath = filePath.replace(/\\/g, "/"); // Windows fix
+    // Cloudinary URL
+    const imageUrl = req.file.path;
 
-    const notice = await Notice.create({ title, image: relativePath });
+    const notice = await Notice.create({ title, image: imageUrl });
     res.json({ success: true, notice });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: "Failed to upload notice" });
   }
 };
+
 
 // ---------------------------
 // Get all notices
@@ -45,17 +43,20 @@ exports.updateNotice = async (req, res) => {
   try {
     const { id } = req.params;
     const { title } = req.body;
-    notice.image = filePath.replace(/\\/g, "/");
 
     const notice = await Notice.findById(id);
     if (!notice) return res.status(404).json({ success: false, message: "Notice not found" });
 
-    // Delete old image if new file uploaded
-    if (filePath && notice.image) {
-      fs.unlink(notice.image, (err) => {
-        if (err) console.warn("Failed to delete old image:", err);
-      });
-      notice.image = filePath;
+    // Update image if new file uploaded
+    if (req.file) {
+      // Delete old image from Cloudinary
+      if (notice.image) {
+        const publicId = notice.image.split("/").pop().split(".")[0]; // extract public ID
+        cloudinary.uploader.destroy(`notice_photos/${publicId}`, (err, result) => {
+          if (err) console.warn("Failed to delete old image:", err);
+        });
+      }
+      notice.image = req.file.path; // new Cloudinary URL
     }
 
     if (title) notice.title = title;
@@ -68,6 +69,7 @@ exports.updateNotice = async (req, res) => {
   }
 };
 
+
 // ---------------------------
 // Delete a notice by ID
 // ---------------------------
@@ -77,9 +79,10 @@ exports.deleteNotice = async (req, res) => {
     const notice = await Notice.findById(id);
     if (!notice) return res.status(404).json({ success: false, message: "Notice not found" });
 
-    // Delete image file
+    // Delete image from Cloudinary
     if (notice.image) {
-      fs.unlink(notice.image, (err) => {
+      const publicId = notice.image.split("/").pop().split(".")[0];
+      cloudinary.uploader.destroy(`notice_photos/${publicId}`, (err, result) => {
         if (err) console.warn("Failed to delete image:", err);
       });
     }
@@ -91,3 +94,4 @@ exports.deleteNotice = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to delete notice" });
   }
 };
+

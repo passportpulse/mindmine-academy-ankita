@@ -12,26 +12,22 @@ export default function UploadNotice() {
   const token = localStorage.getItem("adminToken");
 
   // ---------------------
-  // Fetch notices safely
+  // Fetch notices
   // ---------------------
   useEffect(() => {
     const fetchNotices = async () => {
       try {
-        const res = await fetch(`${API}/api/notice`, {
+        const res = await fetch(`${API}/api/notice/all`, {
           headers: { Authorization: "Bearer " + token },
         });
         const data = await res.json();
-        console.log("notice", data);
-        if (data.success) {
-          setNotices(data.notices);
-        }
+        if (data.success) setNotices(data.notices);
       } catch (err) {
         console.error(err);
       }
     };
-
     fetchNotices();
-  }, [token]); // only re-run if token changes
+  }, [token]);
 
   // ---------------------
   // File change & preview
@@ -56,11 +52,11 @@ export default function UploadNotice() {
 
     const formData = new FormData();
     formData.append("title", title);
-    if (file) formData.append("file", file);
+    if (file) formData.append("photo", file); // match backend parser.single("photo")
 
     const url = editingId
-      ? `${API}/api/notice/${editingId}`
-      : `${API}/api/notice`;
+      ? `${API}/api/notice/update/${editingId}`
+      : `${API}/api/notice/add`;
 
     try {
       const res = await fetch(url, {
@@ -68,6 +64,7 @@ export default function UploadNotice() {
         headers: { Authorization: "Bearer " + token },
         body: formData,
       });
+
       const data = await res.json();
       if (data.success) {
         alert(`Notice ${editingId ? "updated" : "uploaded"} successfully`);
@@ -75,8 +72,8 @@ export default function UploadNotice() {
         setFile(null);
         setPreview(null);
         setEditingId(null);
-        // refetch notices
-        const refreshed = await fetch(`${API}/api/notice`, {
+        // Refresh notices
+        const refreshed = await fetch(`${API}/api/notice/all`, {
           headers: { Authorization: "Bearer " + token },
         });
         const refreshedData = await refreshed.json();
@@ -96,16 +93,13 @@ export default function UploadNotice() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this notice?")) return;
     try {
-      const res = await fetch(`${API}/api/notice/${id}`, {
+      const res = await fetch(`${API}/api/notice/delete/${id}`, {
         method: "DELETE",
         headers: { Authorization: "Bearer " + token },
       });
       const data = await res.json();
-      if (data.success) {
-        setNotices(notices.filter((notice) => notice._id !== id));
-      } else {
-        alert("Failed to delete notice");
-      }
+      if (data.success) setNotices(notices.filter((n) => n._id !== id));
+      else alert("Failed to delete notice");
     } catch (err) {
       console.error(err);
       alert("Error deleting notice");
@@ -117,7 +111,7 @@ export default function UploadNotice() {
   // ---------------------
   const handleEdit = (notice) => {
     setTitle(notice.title);
-    setPreview(notice.imageUrl);
+    setPreview(notice.image); // Cloudinary URL
     setEditingId(notice._id);
   };
 
@@ -153,19 +147,14 @@ export default function UploadNotice() {
         <div className="notices-list">
           {notices.map((notice) => (
             <div key={notice._id} className="notice-card">
-              <img
-                src={`${API}/${notice.image.replace(/\\/g, "/")}`}
-                alt={notice.title}
-              />
+              <img src={notice.image} alt={notice.title} /> {/* Cloudinary URL */}
 
               <div className="notice-info">
                 <h3>{notice.title}</h3>
                 <span>{new Date(notice.createdAt).toLocaleDateString()}</span>
                 <div className="notice-actions">
                   <button onClick={() => handleEdit(notice)}>Edit</button>
-                  <button onClick={() => handleDelete(notice._id)}>
-                    Delete
-                  </button>
+                  <button onClick={() => handleDelete(notice._id)}>Delete</button>
                 </div>
               </div>
             </div>

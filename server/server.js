@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 const path = require("path");
 
+
 const adminAuthRoutes = require("./routes/adminAuth");
 const enquiryRoutes = require("./routes/enquiryRoutes");
 const applicationRoutes = require("./routes/applicationRoutes");

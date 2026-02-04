@@ -1,20 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const { createNotice, getAllNotices, updateNotice, deleteNotice } = require("../controllers/noticeController");
-const auth = require("../middleware/auth");
-const multer = require("multer");
+const { parser } = require("../config/cloudinary"); // Cloudinary parser
+const noticeController = require("../controllers/noticeController");
+const auth = require("../middleware/auth"); // if you have authentication
 
-// Multer config
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname)
-});
-const upload = multer({ storage });
-
+// ---------------------------
 // Routes
-router.post("/", auth, upload.single("file"), createNotice);
-router.get("/", getAllNotices);
-router.put("/:id", auth, upload.single("file"), updateNotice);
-router.delete("/:id", auth, deleteNotice);
+// ---------------------------
+
+// Add a new notice with image upload to Cloudinary
+router.post("/add", auth, parser.single("photo"), noticeController.createNotice);
+
+// Update a notice (with optional new image)
+router.put("/update/:id", auth, parser.single("photo"), noticeController.updateNotice);
+
+// Delete a notice
+router.delete("/delete/:id", auth, noticeController.deleteNotice);
+
+// Get all notices
+router.get("/all", noticeController.getAllNotices);
 
 module.exports = router;
