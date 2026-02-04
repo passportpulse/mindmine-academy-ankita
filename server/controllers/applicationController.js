@@ -15,55 +15,151 @@ exports.getAllApplications = async (req, res) => {
 // ================= CREATE APPLICATION =================
 exports.createApplication = async (req, res) => {
   try {
-    const { fullName, email, phone, course } = req.body;
+    const {
+      fullName,
+      email,
+      phone,
+      course,
 
+      campus,
+      campusLocation,
+
+      dob,
+      gender,
+      caste,
+      aadhaar,
+
+      address,
+      city,
+      pin,
+      state,
+
+      lastQualification,
+      previousCourse,
+      previousInstitute,
+      passingYear,
+      percentage,
+
+      fatherName,
+      fatherOccupation,
+      fatherPhone,
+
+      motherName,
+      motherOccupation,
+      motherPhone,
+
+      guardianName,
+      guardianRelation,
+      guardianPhone,
+    } = req.body;
+
+    // ✅ Basic required validation
     if (!fullName || !email || !phone || !course) {
       return res.status(400).json({
         success: false,
-        message: "Full name, email, phone and course are required"
+        message: "Full name, email, phone and course are required",
       });
     }
 
-    // ✅ Generate tracking ID
+    // ✅ Tracking ID
     const trackingId =
-      "TRK-" +
-      Date.now() +
-      "-" +
-      Math.floor(1000 + Math.random() * 9000);
+      "TRK-" + Date.now() + "-" + Math.floor(1000 + Math.random() * 9000);
 
-    // ✅ Save application
+    // ✅ Save everything
     const newApp = await Application.create({
-      ...req.body,
-      trackingId
+      trackingId,
+
+      campus,
+      campusLocation,
+      course,
+
+      fullName,
+      dob,
+      gender,
+      caste,
+      aadhaar,
+
+      address,
+      city,
+      state,
+      pinCode: pin,
+
+      lastQualification,
+      previousCourse,
+      previousInstitute,
+      passingYear,
+      percentage,
+
+      phone,
+      email,
+
+      fatherName,
+      fatherOccupation,
+      fatherPhone,
+
+      motherName,
+      motherOccupation,
+      motherPhone,
+
+      guardianName,
+      guardianRelation,
+      guardianPhone,
     });
 
-    // ================= EMAIL SETUP =================
+    // ================= EMAIL =================
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: false,
+      port: Number(process.env.SMTP_PORT),
+      secure: Number(process.env.SMTP_PORT) === 465,
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-      }
+        pass: process.env.SMTP_PASS,
+      },
     });
 
-    // Admin mail
+    // 📩 Admin email (FULL DATA)
     const adminMail = {
       from: `"Mindmine Academy" <${process.env.CONTACT_EMAIL}>`,
       to: process.env.CONTACT_EMAIL,
-      subject: `New Application - ${trackingId}`,
+      subject: `New Application – ${trackingId}`,
       html: `
-        <h3>New Student Application</h3>
+        <h3>🎓 New Student Application</h3>
         <p><strong>Tracking ID:</strong> ${trackingId}</p>
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Course:</strong> ${course}</p>
-      `
+
+        <h4>Student Info</h4>
+        <p>Name: ${fullName}</p>
+        <p>Email: ${email}</p>
+        <p>Phone: ${phone}</p>
+        <p>DOB: ${dob}</p>
+        <p>Gender: ${gender}</p>
+        <p>Caste: ${caste}</p>
+        <p>Aadhaar: ${aadhaar}</p>
+
+        <h4>Course & Campus</h4>
+        <p>Course: ${course}</p>
+        <p>Campus: ${campus}</p>
+        <p>Location: ${campusLocation}</p>
+
+        <h4>Address</h4>
+        <p>${address}, ${city}, ${state} - ${pin}</p>
+
+        <h4>Education</h4>
+        <p>Last Qualification: ${lastQualification}</p>
+        <p>Previous Course: ${previousCourse}</p>
+        <p>Institute: ${previousInstitute}</p>
+        <p>Passing Year: ${passingYear}</p>
+        <p>Percentage: ${percentage}</p>
+
+        <h4>Parents</h4>
+        <p>Father: ${fatherName} (${fatherPhone}) - ${fatherOccupation}</p>
+        <p>Mother: ${motherName} (${motherPhone}) - ${motherOccupation}</p>
+
+        <h4>Guardian</h4>
+        <p>${guardianName} (${guardianRelation}) - ${guardianPhone}</p>
+      `,
     };
 
-    // Student mail
+    // 📧 Student email
     const studentMail = {
       from: `"Mindmine Academy" <${process.env.CONTACT_EMAIL}>`,
       to: email,
@@ -71,33 +167,33 @@ exports.createApplication = async (req, res) => {
       html: `
         <p>Hello ${fullName},</p>
         <p>Your application has been received successfully.</p>
-        <p><strong>Your Tracking ID:</strong> ${trackingId}</p>
-        <p>Please keep this ID for future reference.</p>
+        <p><strong>Tracking ID:</strong> ${trackingId}</p>
         <p>Our team will contact you shortly.</p>
         <br/>
         <p>Regards,<br/>Mindmine Academy Team</p>
-      `
+      `,
     };
 
     await Promise.all([
       transporter.sendMail(adminMail),
-      transporter.sendMail(studentMail)
+      transporter.sendMail(studentMail),
     ]);
 
     res.status(201).json({
       success: true,
       message: "Application submitted successfully",
-      trackingId
+      trackingId,
     });
-
   } catch (err) {
     console.error("Application submit error:", err);
     res.status(500).json({
       success: false,
-      message: "Failed to submit application"
+      message: "Failed to submit application",
     });
   }
 };
+
+
 
 // ================= APPROVE / REJECT =================
 exports.updateStatus = async (req, res) => {

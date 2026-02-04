@@ -6,13 +6,12 @@ const applicationSchema = new mongoose.Schema(
     trackingId: {
       type: String,
       unique: true,
-      required: true  // generated on student submission
+      required: true, // generated on student submission
     },
     applicationId: {
       type: String,
       unique: true,
-      sparse: true,  // allows null until approved
-      
+      sparse: true, // allows null until approved
     },
 
     // Campus & Course
@@ -28,7 +27,7 @@ const applicationSchema = new mongoose.Schema(
     aadhaar: String,
     nationality: {
       type: String,
-      default: "Indian"
+      default: "Indian",
     },
     address: String,
     city: String,
@@ -55,14 +54,21 @@ const applicationSchema = new mongoose.Schema(
     guardianRelation: String,
     guardianPhone: String,
 
+    // Education
+    lastQualification: String,
+    previousCourse: String,
+    previousInstitute: String,
+    passingYear: String,
+    percentage: String,
+
     // Status tracking
     status: {
       type: String,
       enum: ["pending", "approved", "rejected"],
-      default: "pending"
-    }
+      default: "pending",
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model("Application", applicationSchema);
