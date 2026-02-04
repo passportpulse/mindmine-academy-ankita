@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "../styles/form.css";
 
-const API = "https://mindmine-backend.onrender.com";
-
 export default function ApplyForm() {
   const statesAndUTs = [
     "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa",
     "Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala",
     "Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland",
     "Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura",
-    "Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands",
-    "Chandigarh","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"
+    "Uttar Pradesh","Uttarakhand","West Bengal",
+    "Andaman and Nicobar Islands","Chandigarh",
+    "Dadra and Nagar Haveli and Daman & Diu","Delhi","Jammu and Kashmir",
+    "Ladakh","Lakshadweep","Puducherry"
   ];
 
   const [formData, setFormData] = useState({
@@ -51,17 +51,19 @@ export default function ApplyForm() {
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // ---------------- VALIDATION ----------------
-
+  // ---------- FRONTEND VALIDATION ----------
   const validateStep1 = () => {
-    if (!/^\d{12}$/.test(formData.aadhaar))
+    if (!formData.course || !formData.fullName || !formData.phone || !formData.email)
+      return "Please fill all required fields";
+
+    if (formData.aadhaar && !/^\d{12}$/.test(formData.aadhaar))
       return "Aadhaar must be exactly 12 digits";
 
     if (!/^\d{10}$/.test(formData.phone))
-      return "Student phone must be 10 digits";
+      return "Phone number must be 10 digits";
 
     if (formData.fatherPhone && !/^\d{10}$/.test(formData.fatherPhone))
       return "Father phone must be 10 digits";
@@ -75,56 +77,60 @@ export default function ApplyForm() {
     return "";
   };
 
+  const validateStep2 = () => {
+    const year = Number(formData.passingYear);
+    const currentYear = new Date().getFullYear();
+
+    if (!formData.lastQualification || !formData.passingYear)
+      return "Please fill academic required fields";
+
+    if (year > currentYear || year < 1950)
+      return "Passing year must be valid and not in the future";
+
+    if (
+      formData.percentage &&
+      (Number(formData.percentage) < 0 || Number(formData.percentage) > 100)
+    )
+      return "Percentage must be between 0 and 100";
+
+    return "";
+  };
+
+  // ---------- STEP CONTROL ----------
   const handleNext = () => {
-    const required = ["course", "fullName", "phone", "email"];
-
-    for (let f of required) {
-      if (!formData[f]) {
-        setError("Please fill all required fields (*)");
-        return;
-      }
-    }
-
-    const err = validateStep1();
-    if (err) {
-      setError(err);
+    const msg = validateStep1();
+    if (msg) {
+      setError(msg);
       return;
     }
-
     setError("");
     setStep(2);
   };
 
   const handleBack = () => setStep(1);
 
-  // ---------------- SUBMIT ----------------
-
+  // ---------- SUBMIT ----------
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const msg = validateStep2();
+    if (msg) {
+      setError(msg);
+      return;
+    }
+
     setError("");
-
-    const year = Number(formData.passingYear);
-    const currentYear = new Date().getFullYear();
-
-    if (!year || year > currentYear) {
-      setError("Passing year must be valid and not in the future");
-      return;
-    }
-
-    const percent = Number(formData.percentage);
-    if (percent < 0 || percent > 100) {
-      setError("Percentage must be between 0 and 100");
-      return;
-    }
-
     setLoading(true);
 
     try {
-      const res = await fetch(`${API}/api/application`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://mindmine-backend.onrender.com/api/application",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await res.json();
 
@@ -139,77 +145,64 @@ export default function ApplyForm() {
     }
   };
 
-  // ---------------- SUCCESS ----------------
-
+  // ---------- SUCCESS ----------
   if (submitted) {
     return (
       <div className="apply-form-container">
         <div className="apply-form-card success-box">
-          <h2>🎉 Application Submitted Successfully</h2>
-          <p>Your Tracking ID:</p>
+          <h2>🎉 Application Submitted Successfully!</h2>
           <strong>{trackingId}</strong>
         </div>
       </div>
     );
   }
 
-  // ---------------- FORM ----------------
-
-  const input = (name, placeholder, props = {}) => (
-    <input
-      name={name}
-      value={formData[name]}
-      onChange={handleChange}
-      placeholder={placeholder}
-      {...props}
-    />
-  );
-
+  // ---------- FORM ----------
   return (
     <div className="apply-form-container">
       <div className="apply-form-card">
+
         <h1>Student Enrollment Form</h1>
 
         <form onSubmit={handleSubmit}>
+
           {step === 1 && (
             <>
-              <h2>Student Info</h2>
+              <h2>Campus & Course Info</h2>
               <div className="grid-2">
-                {input("fullName", "Full Name *")}
-                {input("course", "Course *")}
-                {input("aadhaar", "Aadhaar", { maxLength: 12, inputMode: "numeric" })}
-                {input("phone", "Phone *", { maxLength: 10, inputMode: "numeric" })}
-                {input("email", "Email *", { type: "email" })}
+                <input name="campus" placeholder="Campus" value={formData.campus} onChange={handleChange} />
+                <input name="campusLocation" placeholder="Campus Location" value={formData.campusLocation} onChange={handleChange} />
+                <input name="course" placeholder="Course Applied For *" value={formData.course} onChange={handleChange} />
               </div>
 
-              <h2>Parents</h2>
+              <h2>Student Details</h2>
               <div className="grid-2">
-                {input("fatherPhone", "Father Phone", { maxLength: 10 })}
-                {input("motherPhone", "Mother Phone", { maxLength: 10 })}
-                {input("guardianPhone", "Guardian Phone", { maxLength: 10 })}
+                <input name="fullName" placeholder="Full Name *" value={formData.fullName} onChange={handleChange} />
+                <input type="date" name="dob" value={formData.dob} onChange={handleChange} />
+                <input name="aadhaar" placeholder="Aadhaar (12 digits)" value={formData.aadhaar} onChange={handleChange} />
+                <input name="phone" placeholder="Phone (10 digits) *" value={formData.phone} onChange={handleChange} />
+                <input name="email" type="email" placeholder="Email *" value={formData.email} onChange={handleChange} />
               </div>
 
-              <button type="button" onClick={handleNext}>
-                Next →
-              </button>
+              <div className="form-buttons">
+                <button type="button" onClick={handleNext}>Next</button>
+              </div>
             </>
           )}
 
           {step === 2 && (
             <>
-              <h2>Academic Info</h2>
+              <h2>Academic Information</h2>
               <div className="grid-2">
-                {input("lastQualification", "Last Qualification *")}
-                {input("passingYear", "Passing Year *", { type: "number" })}
-                {input("percentage", "Percentage", { type: "number" })}
+                <input name="lastQualification" placeholder="Last Qualification *" value={formData.lastQualification} onChange={handleChange} />
+                <input name="passingYear" placeholder="Passing Year *" value={formData.passingYear} onChange={handleChange} />
+                <input name="percentage" placeholder="Percentage (0-100)" value={formData.percentage} onChange={handleChange} />
               </div>
 
               <div className="form-buttons">
-                <button type="button" onClick={handleBack}>
-                  ← Back
-                </button>
+                <button type="button" onClick={handleBack}>← Back</button>
                 <button type="submit" disabled={loading}>
-                  {loading ? "Submitting..." : "Submit"}
+                  {loading ? "Submitting..." : "Submit Application"}
                 </button>
               </div>
             </>
