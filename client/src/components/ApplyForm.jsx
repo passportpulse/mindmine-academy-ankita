@@ -2,6 +2,48 @@ import React, { useState } from "react";
 import "../styles/form.css";
 
 export default function ApplyForm() {
+  const statesAndUTs = [
+    // States
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
+
+    // Union Territories
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli and Daman & Diu",
+    "Delhi",
+    "Jammu and Kashmir",
+    "Ladakh",
+    "Lakshadweep",
+    "Puducherry",
+  ];
+
   // ---------------------- STATE ----------------------
   const [formData, setFormData] = useState({
     campus: "",
@@ -200,7 +242,25 @@ export default function ApplyForm() {
                   onChange={handleChange}
                 />
                 <input name="city" placeholder="City" onChange={handleChange} />
-                <input value="West Bengal" disabled />
+
+                <select
+                  name="state"
+                  value={formData.state}
+                  onChange={handleChange}
+                >
+                  <option value="">Select State</option>
+                  {statesAndUTs.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  name="pin"
+                  placeholder="Pin Code"
+                  onChange={handleChange}
+                />
+
                 <input
                   name="pin"
                   placeholder="Pin Code"
