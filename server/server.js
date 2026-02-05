@@ -31,7 +31,6 @@ app.use("/api/admin", adminAuthRoutes);
 app.use("/api/enquiry", enquiryRoutes);
 app.use("/api/application", applicationRoutes);
 app.use("/api/notice", noticeRoutes);
-app.use("/api/payment", require("./routes/payment"));
 
 
 // connect database

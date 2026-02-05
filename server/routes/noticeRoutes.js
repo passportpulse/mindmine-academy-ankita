@@ -1,20 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { parser } = require("../config/cloudinary"); // Cloudinary parser
 const noticeController = require("../controllers/noticeController");
-const auth = require("../middleware/auth"); // if you have authentication
+const auth = require("../middleware/auth");
 
-// ---------------------------
-// Routes
-// ---------------------------
+// Create notice
+router.post("/add", auth, noticeController.createNotice);
 
-// Add a new notice with image upload to Cloudinary
-router.post("/add", auth, parser.single("photo"), noticeController.createNotice);
+// Update notice
+router.put("/update/:id", auth, noticeController.updateNotice);
 
-// Update a notice (with optional new image)
-router.put("/update/:id", auth, parser.single("photo"), noticeController.updateNotice);
-
-// Delete a notice
+// Delete notice
 router.delete("/delete/:id", auth, noticeController.deleteNotice);
 
 // Get all notices
