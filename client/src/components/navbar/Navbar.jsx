@@ -50,7 +50,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-custom fixed">
+    <nav className="navbar navbar-expand-lg navbar-custom fixed-top">
       <div className="container">
         <NavLink
           to="/"

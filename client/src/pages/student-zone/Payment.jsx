@@ -33,7 +33,7 @@ export default function Payment() {
         // handler called after successful payment
         handler: async (response) => {
           await axios.post(
-            "https://mindmine-academy.onrender.com/api/enquiry/payment/verify",
+            "https://mindmine-academy.onrender.com//api/enquiry/payment/verify",
             response,
           );
           alert("Payment successful 🎉");

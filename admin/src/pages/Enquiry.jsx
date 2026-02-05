@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/enquiry.css";
 
-const API = "https://mindmine-academy.onrender.com";
+const API = "https://mindmine-academy.onrender.com/";
 
 export default function Enquiry() {
   const [enquiries, setEnquiries] = useState([]);
